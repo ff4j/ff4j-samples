@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<features>
+
+	<feature uid="PAST" enable="true" description="Always true as in the past">
+		<flipstrategy class="org.ff4j.strategy.ReleaseDateFlipStrategy" >
+			<param name="releaseDate" value="2013-07-14-14:00" />
+		</flipstrategy>
+	</feature>
+			 
+	<feature uid="FUTURE" enable="true" description="Always false as in the (far) future"> 
+		<flipstrategy class="org.ff4j.strategy.ReleaseDateFlipStrategy" >
+			<param name="releaseDate" value="3013-07-14-14:00" />
+		</flipstrategy>
+	</feature>
+			 
+</features>
+

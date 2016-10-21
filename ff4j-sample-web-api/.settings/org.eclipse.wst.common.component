@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ff4j-sample-web-api">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="ff4j-web-1.5.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ff4j-web/ff4j-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ff4j-core-1.5.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ff4j-core/ff4j-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ff4j-webapi-1.5.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ff4j-webapi/ff4j-webapi">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="ff4j-sample-web-api"/>
+        <property name="java-output-path" value="/ff4j-sample-web-api/target/classes"/>
+    </wb-module>
+</project-modules>

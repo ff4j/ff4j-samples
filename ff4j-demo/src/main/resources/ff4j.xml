@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ff4j xmlns="http://www.ff4j.org/schema/ff4j" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://www.ff4j.org/schema/ff4j ../../main/resources/ff4j-1.4.0.xsd">
+	 
+<features>
+
+	<!-- Earth Capabilities -->
+	<feature-group name="earth">
+		<feature uid="earth-desc" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+		<feature uid="earth-link" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+	</feature-group>
+
+	<!-- Mercury Capabilities -->
+	<feature-group name="mercury">
+		<feature uid="mercury-desc" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+		<feature uid="mercury-link" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+	</feature-group>
+
+	<feature-group name="venus">
+		<feature uid="venus-desc" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+		<feature uid="venus-link" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+	</feature-group>
+
+	<feature-group name="jupiter">
+		<feature uid="jupiter-desc" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+		<feature uid="jupiter-link" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+	</feature-group>
+
+	<feature-group name="mars">
+		<feature uid="mars-desc" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+		<feature uid="mars-link" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+	</feature-group>
+
+	<feature-group name="saturn">
+		<feature uid="saturn-desc" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+		<feature uid="saturn-link" enable="true">
+			<security>
+				<role name="ROLE_USER" />
+			</security>
+		</feature>
+	</feature-group>
+
+</features>
+
+	<properties>
+	 <property name="ppint" 	  type="org.ff4j.property.PropertyInt" value="12"   />
+			  <property name="ppdouble"   type="double"  value="12.5" />
+			  <property name="ppboolean"  type="boolean" value="true" />
+			  <property name="ppstring"   value="hello" />
+			  <property name="ppListInt"  value="12,13,14" />
+			  <property name="myLogLevel" value="DEBUG" type="org.ff4j.property.PropertyLogLevel" />
+			  <property name="digitValue" value="1" type="org.ff4j.property.PropertyInt">
+			  	<fixedValues>
+			 		<value>0</value>
+			 		<value>1</value>
+			 		<value>2</value>
+			 		<value>3</value>
+			 	</fixedValues>
+			  </property>
+			  <property name="regionIdentifier" value="AMER" >
+			 	<fixedValues>
+			 		<value>AMER</value>
+			 		<value>SSSS</value>
+			 		<value>EAST</value>
+			 		<value>EAST</value>
+			 	</fixedValues>
+			 </property>
+			 
+		
+	</properties>
+
+
+</ff4j>

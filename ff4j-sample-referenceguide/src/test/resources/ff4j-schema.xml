@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<features xmlns="http://www.ff4j.org/schema/ff4j" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.ff4j.org/schema/ff4j http://ff4j.org/schema/ff4j.xsd">
+
+	<!-- Simplest -->
+	<feature uid="A" enable="true" />
+
+	<!-- Add description -->
+	<feature uid="B" description="Expect to say good bye..." enable="false" />
+
+	<!-- Security stuff -->
+	<feature uid="C" enable="false">
+		<security>
+			<role name="USER" />
+			<role name="ADMIN" />
+		</security>
+	</feature>
+
+	<!-- Some strategies and a group -->
+	<feature-group name="strategies">
+		<feature uid="S1" enable="true">
+			<flipstrategy class="org.ff4j.strategy.el.ExpressionFlipStrategy">
+				<param name="expression" value="A | B" />
+			</flipstrategy>
+		</feature>
+		<feature uid="S2" enable="true">
+			<flipstrategy class="org.ff4j.strategy.ReleaseDateFlipStrategy">
+				<param name="releaseDate" value="2013-07-14-14:00" />
+			</flipstrategy>
+		</feature>
+		<feature uid="S3" description="null" enable="true">
+			<flipstrategy class="org.ff4j.strategy.PonderationStrategy">
+				<param name="weight" value="0.5" />
+			</flipstrategy>
+		</feature>
+
+		<feature uid="S4" description="z" enable="true">
+			<flipstrategy class="org.ff4j.strategy.ClientFilterStrategy">
+				<param name="grantedClients" value="c1,c2" />
+			</flipstrategy>
+		</feature>
+
+		<feature uid="S5" description="null" enable="true">
+			<flipstrategy class="org.ff4j.strategy.ServerFilterStrategy">
+				<param name="grantedServers" value="s1,s2" />
+			</flipstrategy>
+		</feature>
+	</feature-group>
+
+
+</features>

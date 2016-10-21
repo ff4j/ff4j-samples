@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<features>
+
+	<feature uid="featA" description="my first feature" enable="true">
+	</feature>
+
+	<feature uid="featB" enable="false" />
+
+	<!-- Sample Feature Group -->
+	<feature-group name="release-2.3">
+
+		<feature uid="users-story1" description="desc1" enable="false">
+		</feature>
+
+		<feature uid="users-story2" description="null" enable="false">
+		</feature>
+
+	</feature-group>
+	
+</features>
