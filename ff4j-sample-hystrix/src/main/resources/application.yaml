@@ -1,0 +1,38 @@
+server:
+    port: 7300
+    display-name: my-project
+
+ff4j:
+  webapi:
+    authentication: false
+    authorization: false
+
+hystrix:
+    command:
+        default:
+            execution:
+                timeout:
+                    enabled: true
+                isolation:
+                    strategy: THREAD
+                    thread:
+                        interruptOnCancel: true
+                        interruptOnTimeout: true
+                        timeoutInMilliseconds: 10000
+            fallback:
+                enabled: true
+            circuitBreaker:
+                enabled: true
+                requestVolumeThreshold: 20
+                sleepWindowInMilliseconds: 5000
+                errorThresholdPercentage: 50
+                forceOpen: false
+                forceClosed: true
+            metrics:
+                rollingStats:
+                    timeInMilliseconds: 10000
+                    numBuckets: 10
+                rollingPercentile:
+                    enabled: true
+                    timeInMilliseconds: 60000
+                    numBuckets: 6

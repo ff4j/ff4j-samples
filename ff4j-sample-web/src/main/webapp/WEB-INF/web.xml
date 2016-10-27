@@ -23,7 +23,7 @@
 	
 	<!-- Embedded Console -->
     <servlet>
-        <servlet-name>ff4j-console</servlet-name>
+        <servlet-name>ff4j-old</servlet-name>
         <servlet-class>org.ff4j.web.embedded.ConsoleServlet</servlet-class>
         <init-param>
             <param-name>ff4jProvider</param-name>

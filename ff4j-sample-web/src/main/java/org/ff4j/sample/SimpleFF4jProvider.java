@@ -129,6 +129,7 @@ public class SimpleFF4jProvider implements FF4jProvider {
         
         // Create random DATA for today
         populateRepository(100);
+        System.out.println("OK");
     }
 
     /**
