@@ -13,7 +13,7 @@ As a noSQL column-oriented DB we decided to implement all stores for Cassandra. 
 
 | Scope              | Status        | Comment  |
 | ------------------ |:-------------:| --------:|
-| FeatureStore       |       OK      |   N/A    |
+| FeatureStore       |       <img src="https://github.com/clun/ff4j/raw/master/src/site/resources/images/on.png" style="height:20px"/>   |   N/A    |
 | PropertyStore      |       OK      |   N/A    |
 | EventRepository    |       OK      |   N/A    |
 | CacheProxy         |       KO      | No real added-value to be used only as Cache |
