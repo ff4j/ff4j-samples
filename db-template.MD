@@ -24,46 +24,85 @@ As a noSQL column-oriented DB we decided to implement all stores for Cassandra. 
 
 The DDL file is provided. Find here an overview of the created column Family
 ```sql
--- Create table Feature
-CREATE TABLE ff4j.features ( 
-   UID varchar, 
-   ENABLE int, 
-   DESCRIPTION varchar, 
-   STRATEGY varchar, 
-   GROUPNAME varchar, 
-   ROLES set<varchar>, 
-   PROPERTIES map<varchar,varchar>, 
-   PRIMARY KEY (UID)
-);
+cqlsh:ff4j> describe ff4j
 
--- create table properties
-CREATE TABLE ff4j.properties ( 
-   UID varchar, 
-   CLAZZ varchar, 
-   VALUE varchar, 
-   DESCRIPTION varchar,
-   FIXEDVALUES set<varchar>, 
-   PRIMARY KEY (UID)
-);
+CREATE KEYSPACE ff4j WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3'}  AND durable_writes = true;
 
--- create table audit (group per date)
 CREATE TABLE ff4j.audit (
-    uid varchar,
-    date varchar,
+    uid text PRIMARY KEY,
+    action text,
+    date text,
+    duration bigint,
+    hostname text,
+    keys map<text, text>,
+    name text,
+    source text,
     time timestamp,
-    type varchar,
-    name varchar,
-    action varchar,
-    hostName varchar,
-    source varchar,
-    duration int,
-    user varchar,
-    value varchar,
-    custom map<varchar,varchar>,
-    PRIMARY KEY (UID)
-);
-```
+    type text,
+    user text,
+    value text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
 
+CREATE TABLE ff4j.features (
+    uid text PRIMARY KEY,
+    description text,
+    enable int,
+    groupname text,
+    properties map<text, text>,
+    roles set<text>,
+    strategy text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+CREATE INDEX features_groupname_idx ON ff4j.features (groupname);
+
+CREATE TABLE ff4j.properties (
+    uid text PRIMARY KEY,
+    clazz text,
+    description text,
+    fixedvalues set<text>,
+    value text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+
+cqlsh:ff4j>
+```
 
 
 ### (c) Configuration
