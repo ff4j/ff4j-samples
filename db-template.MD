@@ -13,11 +13,11 @@ As a noSQL column-oriented DB we decided to implement all stores for Cassandra. 
 
 | Scope              | Status        | Comment  |
 | ------------------ |:-------------:| --------:|
-| FeatureStore       |       <img src="https://github.com/clun/ff4j/raw/master/src/site/resources/images/on.png" style="height:20px"/>   |   N/A    |
-| PropertyStore      |       OK      |   N/A    |
-| EventRepository    |       OK      |   N/A    |
-| CacheProxy         |       KO      | No real added-value to be used only as Cache |
-| UnitTests Embedded |       OK      | Embedded Cassandra Db is provided by [Cassandra-Unit](https://github.com/jsevellec/cassandra-unit)     |
+| FeatureStore       |      ![](https://github.com/clun/ff4j/raw/master/src/site/resources/images/on.png)   |   N/A    |
+| PropertyStore      |      ![](https://github.com/clun/ff4j/raw/master/src/site/resources/images/on.png)      |   N/A    |
+| EventRepository    |      ![](https://github.com/clun/ff4j/raw/master/src/site/resources/images/on.png)      |   N/A    |
+| CacheProxy         |      ![](https://github.com/clun/ff4j/raw/master/src/site/resources/images/off.png)     | No real added-value to be used only as Cache |
+| UnitTests Embedded |      ![](https://github.com/clun/ff4j/raw/master/src/site/resources/images/on.png)      | Embedded Cassandra Db is provided by [Cassandra-Unit](https://github.com/jsevellec/cassandra-unit)     |
 
 
 ### (b) Data Model
