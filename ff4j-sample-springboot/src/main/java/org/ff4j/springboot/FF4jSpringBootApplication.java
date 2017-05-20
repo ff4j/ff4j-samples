@@ -34,7 +34,7 @@ package org.ff4j.springboot;
  */
 
 
-import org.ff4j.web.embedded.ConsoleServlet;
+import org.ff4j.web.FF4jDispatcherServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -51,7 +51,7 @@ import org.springframework.context.annotation.Bean;
 public class FF4jSpringBootApplication extends SpringBootServletInitializer {
     
     @Autowired
-    private ConsoleServlet ff4jServlet;
+    private FF4jDispatcherServlet ff4jServlet;
     
     public static void main(String[] args) {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(FF4jSpringBootApplication.class);
