@@ -60,6 +60,8 @@ public class FF4jConfiguration {
         ApiConfig apiConfig = new ApiConfig();
         apiConfig.setAuthenticate(authentication);
         apiConfig.setAutorize(authorization);
+        apiConfig.setWebContext("demo");
+        apiConfig.setPort(8082);
         apiConfig.setfF4j(getFF4j());
         return apiConfig;
     }

@@ -22,7 +22,7 @@
 
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/useless*</url-pattern>
 	</filter-mapping>
 
 	<!-- Spring MVC -->
@@ -50,7 +50,7 @@
 		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
 	
-	<!-- Embedded Console -->
+	<!-- Embedded Console 
 	<servlet>
 		<servlet-name>ff4j-console</servlet-name>
 		<servlet-class>org.ff4j.web.embedded.ConsoleServlet</servlet-class>
@@ -64,6 +64,24 @@
 		<servlet-name>ff4j-console</servlet-name>
 		<url-pattern>/ff4j-console</url-pattern>
 	</servlet-mapping>
+	-->
+	
+	<servlet>
+ <servlet-name>ff4j-console</servlet-name>
+ <servlet-class>org.ff4j.web.FF4jDispatcherServlet</servlet-class>
+    <init-param>
+            <param-name>ff4jProvider</param-name>
+            <param-value>org.ff4j.demo.SimpleFF4JJerseyApplication</param-value>
+        </init-param>
+        
+ <load-on-startup>1</load-on-startup>
+</servlet>
+    
+<servlet-mapping>
+ <servlet-name>ff4j-console</servlet-name>
+ <url-pattern>/ff4j-console/*</url-pattern>
+</servlet-mapping>
+
 	
 	<!-- Welcome page -->
 	<welcome-file-list>

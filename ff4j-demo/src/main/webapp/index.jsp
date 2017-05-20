@@ -38,7 +38,7 @@ body {
 				<a class="brand" href="#" style="color:#00ab8b">&nbsp;Showcase Application </a>
 				
 				<div style="float:right">
-				<a href="<%=request.getContextPath()%>/ff4j-console" class="btn btn-info" target="_blank">
+				<a href="<%=request.getContextPath()%>/ff4j-console/" class="btn btn-info" target="_blank">
 			<i class="icon-list-alt icon-white"></i>&nbsp;Console
 		</a>
 		&nbsp;&nbsp;
@@ -46,9 +46,6 @@ body {
 			<i class="icon-map-marker icon-white"></i>&nbsp;RestAPI
 		</a>
 		&nbsp;&nbsp;
-		<a href="<%=request.getContextPath()%>/rest/index.html" class="btn btn-success" >
-			<i class="icon-book icon-white"></i>&nbsp;Swagger
-		</a>
 		</div>
 			</div>
 		</div>
@@ -61,8 +58,7 @@ body {
         <p class="lead">Enable features at runtime through dedicated console or API.</p>
         <p>Part of this page are registered as <b>features</b> and will display only if the related feature
         is <b>enabled.</b>
-        <p>Even if feature is enabled you can limit access by providing dedicated <b>permissions</b> <i>(no permission means public)</i> 
-        <p>You can play with the administration console will (here credentials : <span style="color:#880000"><b>admin/admin</b></span></p>
+      
       </div>
 
 		<!-- Example row of columns -->

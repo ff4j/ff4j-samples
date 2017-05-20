@@ -25,9 +25,10 @@
 	<!-- FF4J -->
 	<bean id="ff4j" class="org.ff4j.FF4j" >
 		<property name="featureStore" ref="ff4j.storeproxy" />
+		<!-- 
 		<property name="authorizationsManager" >
 			<bean class="org.ff4j.security.SpringSecurityAuthorisationManager" />
-		</property>
+		</property>-->
 	</bean>
 	
 </beans>

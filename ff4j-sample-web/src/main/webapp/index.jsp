@@ -1,3 +1,4 @@
+<%@ taglib prefix="ff4j" uri="http://www.ff4j.org/taglibs/ff4j" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +42,10 @@ body {
 		 <a href="<%=request.getContextPath()%>/ff4j-console/" class="btn btn-primary" >
 			<i class="icon-th-large icon-white"></i>&nbsp;Access embedded Web Console
 		</a>
+		
+		<ff4j:enable featureid="f1">F1 is enabled</ff4j:enable>
+        
+        <ff4j:disable featureid="f1">F1 is disabled</ff4j:disable>
 		
       </div>
 	</div>
