@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.dbcp.BasicDataSource;
+
 /*
  * #%L
  * ff4j-sample-web
@@ -33,7 +35,15 @@ import org.ff4j.FF4j;
 import org.ff4j.audit.Event;
 import org.ff4j.audit.EventConstants;
 import org.ff4j.audit.repository.EventRepository;
+import org.ff4j.audit.repository.JdbcEventRepository;
 import org.ff4j.core.Feature;
+import org.ff4j.core.FeatureStore;
+import org.ff4j.property.store.JdbcPropertyStore;
+import org.ff4j.property.store.PropertyStore;
+import org.ff4j.springjdbc.store.EventRepositorySpringJdbc;
+import org.ff4j.springjdbc.store.FeatureStoreSpringJdbc;
+import org.ff4j.springjdbc.store.PropertyStoreSpringJdbc;
+import org.ff4j.store.JdbcFeatureStore;
 import org.ff4j.utils.TimeUtils;
 import org.ff4j.utils.Util;
 import org.ff4j.web.FF4jProvider;
@@ -113,7 +123,31 @@ public class SimpleFF4jProvider implements FF4jProvider {
      * Default constructeur invoked by servlet.
      */
     public SimpleFF4jProvider() {
+        
+        // In Memory
         ff4j = new FF4j("ff4j.xml").audit(true);
+        
+        // Use JDBC DataSource
+        //ff4j = new FF4j();
+        
+        // DataSource
+        BasicDataSource dbcpDataSource = new BasicDataSource();
+        dbcpDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dbcpDataSource.setUsername("root");
+        dbcpDataSource.setPassword("****");
+        dbcpDataSource.setUrl("jdbc:mysql://localhost:3306/ff4j_v1");
+       
+        // Core JDBC
+        //ff4j.setFeatureStore(new JdbcFeatureStore(dbcpDataSource));
+        //ff4j.setPropertiesStore(new JdbcPropertyStore(dbcpDataSource));
+        //ff4j.setEventRepository(new JdbcEventRepository(dbcpDataSource));
+        //ff4j.audit(true);
+        
+        // Spring JDBC
+        //ff4j.setFeatureStore(new FeatureStoreSpringJdbc(dbcpDataSource));
+        //ff4j.setPropertiesStore(new PropertyStoreSpringJdbc(dbcpDataSource));
+        //ff4j.setEventRepository(new EventRepositorySpringJdbc(dbcpDataSource));
+        //ff4j.audit(true);
         
         sources.add(SOURCE_JAVA);
         sources.add(EventConstants.SOURCE_SSH);

@@ -32,7 +32,12 @@
 			</security>
 		</feature>
 	
-		<feature uid="AwesomeFeature" enable="true" description="some desc" />
+		<feature uid="AwesomeFeature" enable="true" description="some desc">
+			<flipstrategy class="org.ff4j.sample.AmichaiuStrategy">
+	          <param name="off_for" value="*" />
+	          <param name="on_for"  value="IT123" />
+	        </flipstrategy>
+		</feature>
 		
 		<feature uid="f1" enable="true" description="some desc" />
 		
@@ -91,12 +96,13 @@
                 </custom-properties>
 			</feature>
 		</feature-group>
-		
+		            
 		<feature-group name="GRP1">
 			<feature uid="forth" enable="true" description="description" >
 				<flipstrategy class="org.ff4j.strategy.el.ExpressionFlipStrategy">
 					<param name="expression" value="third | second" />
 				</flipstrategy>
+				
 				<security>
 					<role name="ADMINISTRATOR" />
 					<role name="BETA-TESTER" />

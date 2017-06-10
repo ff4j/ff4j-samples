@@ -4,6 +4,15 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="ff4j-web-1.6.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ff4j-web/ff4j-web">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ff4j-core-1.6.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ff4j-core/ff4j-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ff4j-store-springjdbc-1.6.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ff4j-store-springjdbc/ff4j-store-springjdbc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="ff4j-sample-web"/>
         <property name="java-output-path" value="/ff4j-sample-web/target/classes"/>
     </wb-module>

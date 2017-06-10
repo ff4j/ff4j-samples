@@ -41,9 +41,9 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       <span class="glyphicon glyphicon-pencil"></span>&nbsp; FF4J <span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="/ff4j-console">WebConsole</a></li>
-                        <li><a href="/api/ff4j">Web API</a></li>
-                        <li><a href="/swagger/index.html">Swagger Documentation</a></li>
+                        <li><a href="/demo/ff4j-console/">WebConsole</a></li>
+                        <li><a href="/demo/api/ff4j">Web API</a></li>
+                        <li><a href="/demo/swagger/index.html">Swagger Documentation</a></li>
                       </ul>
                     </li>
                     
@@ -51,10 +51,10 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                       <span class="glyphicon glyphicon-pencil"></span>&nbsp;Spring-BOOT<span class="caret"></span></a>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="/info">General Information</a></li>
-                        <li><a href="/metrics">Monitoring</a></li>
-                        <li><a href="/health">Health</a></li>
-                        <li><a href="/beans">Beans</a></li>
+                        <li><a href="/demo/info">General Information</a></li>
+                        <li><a href="/demo/metrics">Monitoring</a></li>
+                        <li><a href="/demo/health">Health</a></li>
+                        <li><a href="/demo/beans">Beans</a></li>
                       </ul>
                     </li>
                    

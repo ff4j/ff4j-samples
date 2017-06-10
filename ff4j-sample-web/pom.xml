@@ -38,6 +38,23 @@
 			<version>${project.version}</version>
 		</dependency>
 		
+		<!-- DB Connection -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+        </dependency>
+		
+		<!-- Spring JDBC -->
+		<dependency>
+		  <artifactId>ff4j-store-springjdbc</artifactId>
+		  <groupId>org.ff4j</groupId>
+		  <version>${project.version}</version>
+		</dependency>
+		
 		<!-- web -->
 		<dependency>
 			<groupId>commons-io</groupId>
