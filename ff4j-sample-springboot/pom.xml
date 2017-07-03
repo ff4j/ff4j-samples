@@ -13,9 +13,9 @@
 	<!-- ~ PARENT ~ -->
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<parent>
-		<groupId>org.ff4j</groupId>
-		<artifactId>ff4j-parent</artifactId>
-		<version>1.6.5-SNAPSHOT</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-dependencies</artifactId>
+		<version>1.3.8.RELEASE</version>
 	</parent>
 
 	<!-- ~~~~~~~~~~~~~~ -->
@@ -23,11 +23,8 @@
 	<!-- ~~~~~~~~~~~~~~ -->
 	<properties>
 		<java.version>1.8</java.version>
-		<slf4j.version>1.7.12</slf4j.version>
-		<logback.version>1.1.3</logback.version>
-		<spring-boot.version>1.3.0.RELEASE</spring-boot.version>
-		<spring-boot-admin.version>1.3.0</spring-boot-admin.version>
-		<ff4j.version>1.6.3</ff4j.version>
+		<spring-boot.version>1.3.8.RELEASE</spring-boot.version>
+		<ff4j.version>1.6.5</ff4j.version>
 	</properties>
 
 	<!-- ~~~~~~~~~~~~~~~~ -->
@@ -40,19 +37,47 @@
 			<groupId>org.ff4j</groupId>
 			<version>${ff4j.version}</version>
 		</dependency>
-		
+
 		<!-- Declare Servlet -->
 		<dependency>
 			<artifactId>ff4j-web</artifactId>
 			<groupId>org.ff4j</groupId>
 			<version>${ff4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>jstl</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		
+
 		<!-- Declare WebAPI -->
 		<dependency>
 			<artifactId>ff4j-webapi-jersey2x</artifactId>
 			<groupId>org.ff4j</groupId>
 			<version>${ff4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>
+						org.glassfish.jersey.test-framework.providers
+					</groupId>
+					<artifactId>
+						jersey-test-framework-provider-grizzly2
+					</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.glassfish.grizzly</groupId>
+					<artifactId>grizzly-http-servlet</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.glassfish.jersey.connectors</groupId>
+					<artifactId>jersey-grizzly-connector</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- MVC -->
@@ -64,30 +89,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
 		</dependency>
-		
+
 		<!-- Monitoring -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-		
-		<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-		
-		<!-- Container -->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		
-		<!-- Registration to adminitration console -->
-		<dependency>
-			<groupId>de.codecentric</groupId>
-			<artifactId>spring-boot-admin-starter-client</artifactId>
-			<version>${spring-boot-admin.version}</version>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
 		</dependency>
 
 		<dependency>
@@ -95,7 +106,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
-		
+
 		<!-- Metrics Support -->
 		<dependency>
 			<groupId>io.dropwizard.metrics</groupId>
@@ -122,28 +133,14 @@
 
 	</dependencies>
 
-	<!-- ****************************** -->
-	<!-- ** Spring Boot Management ** -->
-	<!-- ****************************** -->
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring-boot.version}</version>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -153,7 +150,7 @@
 					<showWarnings>false</showWarnings>
 				</configuration>
 			</plugin>
-				
+
 		</plugins>
 	</build>
 
