@@ -13,8 +13,8 @@
   </feature>
   
   <feature uid="myFutureFeature" enable="true">
-    <flipstrategy class="org.ff4j.strategy.ReleaseDateFlipStrategy" >
-      <param name="releaseDate" value="2013-07-14-14:00" />
+    <flipstrategy class="org.ff4j.strategy.el.ExpressionFlipStrategy" >
+      <param name="expression" value="hello &amp; userStory3_1" />
     </flipstrategy>
   </feature>
   

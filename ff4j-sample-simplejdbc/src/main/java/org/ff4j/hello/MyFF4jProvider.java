@@ -21,8 +21,8 @@ public class MyFF4jProvider implements FF4jProvider {
     public FF4j getFF4j() {
         if (ff4j == null) {
             // Initialize with CORE JDBC
-            ff4j = new FF4j();
-
+            ff4j = new FF4j("ff4j.xml");
+           
             // MySQL DATASOURCE AS A SAMPLE
             BasicDataSource dataSource = new BasicDataSource();
             dataSource.setDriverClassName("com.mysql.jdbc.Driver");
