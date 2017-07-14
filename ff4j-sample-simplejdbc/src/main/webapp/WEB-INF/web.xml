@@ -28,7 +28,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>WebAPI</servlet-name>
-        <url-pattern>/ff4j-api/*</url-pattern>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
    
     
