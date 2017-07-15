@@ -9,21 +9,19 @@
 	<artifactId>ff4j-sample-springboot</artifactId>
 	<packaging>jar</packaging>
 
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<!-- ~ PARENT ~ -->
-	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-dependencies</artifactId>
-		<version>1.3.8.RELEASE</version>
-	</parent>
-
+	 <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>1.5.4.RELEASE</version>
+        <relativePath/>
+    </parent>
+    
 	<!-- ~~~~~~~~~~~~~~ -->
 	<!-- ~ PROPERTIES ~ -->
 	<!-- ~~~~~~~~~~~~~~ -->
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-boot.version>1.3.8.RELEASE</spring-boot.version>
+		<spring-boot.version>1.5.4.RELEASE</spring-boot.version>
 		<ff4j.version>1.6.5</ff4j.version>
 	</properties>
 
@@ -80,22 +78,20 @@
 			</exclusions>
 		</dependency>
 
-		<!-- MVC -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
 		</dependency>
-
-		<!-- Monitoring -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-freemarker</artifactId>
@@ -106,6 +102,8 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
+		-->
 
 		<!-- Metrics Support -->
 		<dependency>

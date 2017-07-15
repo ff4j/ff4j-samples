@@ -38,8 +38,8 @@ import org.ff4j.web.FF4jDispatcherServlet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.ServletRegistrationBean;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 /**
@@ -66,7 +66,7 @@ public class FF4jSpringBootApplication extends SpringBootServletInitializer {
     
     @Bean 
     public ServletRegistrationBean servletRegistrationBean(){ 
-        return new ServletRegistrationBean(ff4jServlet, "/ff4j-console/*"); 
+        return new ServletRegistrationBean(ff4jServlet, "/ff4j-console/"); 
     }
     
 }

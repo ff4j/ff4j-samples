@@ -20,7 +20,6 @@ package org.ff4j.springboot.web;
  * #L%
  */
 
-
 import java.util.Date;
 import java.util.Map;
 
