@@ -1,4 +1,4 @@
-package org.ff4j.springboot;
+package org.ff4j.springboot.conf;
 
 /*
  * #%L
@@ -27,10 +27,14 @@ import org.ff4j.property.PropertyString;
 import org.ff4j.web.ApiConfig;
 import org.ff4j.web.FF4jDispatcherServlet;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ConditionalOnClass({FF4j.class})
+@ComponentScan(value = {"org.ff4j.spring.boot.web.api", "org.ff4j.services", "org.ff4j.aop", "org.ff4j.spring"})
 public class FF4jConfiguration {
  
     @Value("${ff4j.webapi.authentication}")
@@ -43,6 +47,7 @@ public class FF4jConfiguration {
     public FF4j getFF4j() {
         return new FF4j()
             .createFeature("f1")
+            .createFeature("AwesomeFeature")
             .createFeature("f2").createFeature("f3")
             .createProperty(new PropertyString("SampleProperty", "go!"))
             .createProperty(new PropertyInt("SamplePropertyIn", 12));
@@ -60,9 +65,8 @@ public class FF4jConfiguration {
         ApiConfig apiConfig = new ApiConfig();
         apiConfig.setAuthenticate(authentication);
         apiConfig.setAutorize(authorization);
-
-        apiConfig.setWebContext("demo");
-        apiConfig.setPort(8082);
+        apiConfig.setWebContext("/");
+        apiConfig.setPort(8080);
         apiConfig.setFF4j(getFF4j());
         return apiConfig;
     }
