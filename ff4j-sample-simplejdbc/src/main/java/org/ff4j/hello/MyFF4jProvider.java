@@ -34,6 +34,15 @@ public class MyFF4jProvider implements FF4jProvider {
             ff4j.setFeatureStore(new JdbcFeatureStore(dataSource));
             ff4j.setPropertiesStore(new JdbcPropertyStore(dataSource));
             ff4j.setEventRepository(new JdbcEventRepository(dataSource));
+            
+            ff4j.audit(true);
+            ff4j.autoCreate(true);
+            ff4j.enable("feature_Y");
+            ff4j.enable("feature_X");
+            for (int i = 0; i < 10; i++) {
+                ff4j.check("feature_X");
+                if (i%2 == 0) ff4j.check("feature_Y");
+            }
         }
         return ff4j;
     }
