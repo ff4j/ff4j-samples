@@ -6,7 +6,7 @@
 	<!-- ~ COORDINATES ~ -->
 	<!-- ~~~~~~~~~~~~~~~ -->
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>ff4j-sample-springboot</artifactId>
+	<artifactId>ff4j-sample-springboot-hazelcast</artifactId>
 	<packaging>jar</packaging>
 
 	 <parent>
