@@ -192,7 +192,9 @@
 			  <artifactId>jetty-maven-plugin</artifactId>
 			  <version>9.3.2.v20150730</version>
 			  <configuration>
-			 	<contextPath>/ff4j-demo</contextPath>
+				  <webApp>
+					  <contextPath>/ff4j-demo</contextPath>
+				  </webApp>
 			    <stopPort>9965</stopPort>
 			    <stopKey>foo</stopKey>
 			    <stopWait>10</stopWait>
