@@ -1,4 +1,6 @@
 <%@ taglib prefix="ff4j" uri="http://www.ff4j.org/taglibs/ff4j" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,14 +49,14 @@ body {
         FF4J Status : 
         
         <p> F1:        
-        <ff4j:enable featureid="f1">
+        <ff4j:enable featureid="F1">
             <a href="#" class="btn btn-success" >
                 <i class="icon-check icon-white"></i>&nbsp;ENABLE
             </a>
         </ff4j:enable>
-        <ff4j:disable featureid="f1">
+        <ff4j:disable featureid="F1">
            <a href="#" class="btn btn-danger" >
-                <i class="icon-off icon-white"></i>&nbsp;DISABLE
+                <i class="icon-off icon-white"></i>&nbsp;F1 DISABLE
             </a>
         </ff4j:disable>
         
@@ -66,7 +68,7 @@ body {
         </ff4j:enable>
         <ff4j:disable featureid="fX">
            <a href="#" class="btn btn-danger" >
-                <i class="icon-off icon-white"></i>&nbsp;DISABLE
+                <i class="icon-off icon-white"></i>&nbsp;FX DISABLE
             </a>
         </ff4j:disable>
        

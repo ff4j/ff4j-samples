@@ -52,8 +52,6 @@ body {
             <i class="icon-tag icon-white"></i>&nbsp;Sample TAGS page
         </a>
         
-         <%= session.getAttribute("FF4J")%>
-		
       </div>
 	</div>
 
