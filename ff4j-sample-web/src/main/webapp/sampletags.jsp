@@ -49,12 +49,12 @@ body {
         FF4J Status : 
         
         <p> F1:        
-        <ff4j:enable featureid="F1">
+        <ff4j:enable featureid="F1" shareHttpSession="">
             <a href="#" class="btn btn-success" >
                 <i class="icon-check icon-white"></i>&nbsp;ENABLE
             </a>
         </ff4j:enable>
-        <ff4j:disable featureid="F1">
+        <ff4j:disable featureid="F1" shareHttpSession="">
            <a href="#" class="btn btn-danger" >
                 <i class="icon-off icon-white"></i>&nbsp;F1 DISABLE
             </a>

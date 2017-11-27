@@ -22,8 +22,10 @@ package org.ff4j.springboot.conf;
 
 
 import org.ff4j.FF4j;
+import org.ff4j.core.Feature;
 import org.ff4j.property.PropertyInt;
 import org.ff4j.property.PropertyString;
+import org.ff4j.strategy.el.ExpressionFlipStrategy;
 import org.ff4j.web.ApiConfig;
 import org.ff4j.web.FF4jDispatcherServlet;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,12 +47,17 @@ public class FF4jConfiguration {
     
     @Bean
     public FF4j getFF4j() {
-        return new FF4j()
+       FF4j ff4j = new FF4j()
             .createFeature("f1")
             .createFeature("AwesomeFeature")
             .createFeature("f2").createFeature("f3")
             .createProperty(new PropertyString("SampleProperty", "go!"))
             .createProperty(new PropertyInt("SamplePropertyIn", 12));
+       
+        Feature exp = new Feature("exp");
+        exp.setFlippingStrategy(new ExpressionFlipStrategy("exp", "f1 & f2 | !f1 | f2"));
+        ff4j.createFeature(exp);
+        return ff4j;
     }
 
     @Bean
