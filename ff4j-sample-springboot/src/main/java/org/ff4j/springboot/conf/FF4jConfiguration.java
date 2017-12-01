@@ -26,6 +26,7 @@ import org.ff4j.core.Feature;
 import org.ff4j.property.PropertyInt;
 import org.ff4j.property.PropertyString;
 import org.ff4j.strategy.el.ExpressionFlipStrategy;
+import org.ff4j.utils.Util;
 import org.ff4j.web.ApiConfig;
 import org.ff4j.web.FF4jDispatcherServlet;
 import org.springframework.beans.factory.annotation.Value;
@@ -70,9 +71,19 @@ public class FF4jConfiguration {
     @Bean
     public ApiConfig getApiConfig() {
         ApiConfig apiConfig = new ApiConfig();
-        apiConfig.setAuthenticate(authentication);
-        apiConfig.setAutorize(authorization);
-        apiConfig.setWebContext("/");
+        
+        // Enable Authentication on API KEY
+        apiConfig.setAuthenticate(false);
+        apiConfig.createApiKey("apikey1", true, true, Util.set("ADMIN", "USER"));
+        apiConfig.createApiKey("apikey2", true, true, Util.set("ADMIN", "USER"));
+        apiConfig.createUser("userName","password", true, true, Util.set("ADMIN", "USER"));
+        apiConfig.createUser("user","userPass", true, true, Util.set("ADMIN", "USER"));
+        apiConfig.createUser("a","a", true, true, Util.set("ADMIN", "USER"));
+        apiConfig.createUser("b","b", true, true, Util.set("ADMIN", "USER"));
+        
+        // Check Autorization as well
+        apiConfig.setAutorize(false);
+        apiConfig.setWebContext("/api");
         apiConfig.setPort(8080);
         apiConfig.setFF4j(getFF4j());
         return apiConfig;

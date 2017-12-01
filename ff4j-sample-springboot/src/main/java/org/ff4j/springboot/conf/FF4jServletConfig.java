@@ -48,7 +48,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass({ConsoleServlet.class, FF4jDispatcherServlet.class})
 @AutoConfigureAfter(FF4jConfiguration.class)
-public class FF4JWebConfiguration extends SpringBootServletInitializer {
+public class FF4jServletConfig extends SpringBootServletInitializer {
     
     // Since 1.6
     

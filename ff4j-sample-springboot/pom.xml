@@ -21,7 +21,7 @@
 	<!-- ~~~~~~~~~~~~~~ -->
 	<properties>
 		<java.version>1.8</java.version>
-		<ff4j.version>1.6.5</ff4j.version>
+		<ff4j.version>1.6.6-SNAPSHOT</ff4j.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -33,6 +33,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         
 		<!-- Servlet -->
@@ -53,7 +57,22 @@
 			<artifactId>ff4j-spring-boot-web-api</artifactId>
 			<groupId>org.ff4j</groupId>
 			<version>${ff4j.version}</version>
-		</dependency>		
+		</dependency>	
+		
+		<!-- Support for tests -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Client HTTP -->
+        <dependency>
+            <groupId>org.ff4j</groupId>
+            <artifactId>ff4j-webapi-jersey2x</artifactId>
+            <scope>test</scope>
+            <version>${ff4j.version}</version>
+        </dependency>	
 		
 	</dependencies>
 
