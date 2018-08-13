@@ -12,7 +12,7 @@
 	 <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>1.5.4.RELEASE</version>
+        <version>1.5.15.RELEASE</version>
         <relativePath/>
     </parent>
     
@@ -21,8 +21,8 @@
 	<!-- ~~~~~~~~~~~~~~ -->
 	<properties>
 		<java.version>1.8</java.version>
-		<ff4j.version>1.6.5</ff4j.version>
-		<docker.image.prefix>ff4j-sample-springboot</docker.image.prefix>
+		<ff4j.version>1.7.1</ff4j.version>
+		<docker.image.prefix>ff4j</docker.image.prefix>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -96,10 +96,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <testSource>1.8</testSource>
-                    <testTarget>1.8</testTarget>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <testSource>${java.version}</testSource>
+                    <testTarget>${java.version}</testTarget>
                 </configuration>
             </plugin>
 			
