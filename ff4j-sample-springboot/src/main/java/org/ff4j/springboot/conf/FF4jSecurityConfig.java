@@ -75,7 +75,8 @@ public class FF4jSecurityConfig extends WebSecurityConfigurerAdapter {
  
     /** {@inheritDoc} */
     @Override
-    protected void configure(HttpSecurity http) throws Exception { 
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
         if (apiConfig.isAuthenticate()) {
             // ENFORCE AUTHENTICATION
             http.httpBasic().
