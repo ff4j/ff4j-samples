@@ -15,8 +15,12 @@ public class HomeController {
     
     @RequestMapping("/")
     public String welcome(Map<String, Object> model) {
-        model.put("message", "OK");
-        model.put("ff4j_feature_TEST",  ff4j.check("TEST"));
+        model.put("featureCallUs",  ff4j.check("CallUS"));
+        model.put("openIssue",  ff4j.check("openIssue"));
+        
+        if (ff4j.getPropertiesStore().existProperty("phoneNumber")) {
+            model.put("phoneNumber",  ff4j.getProperty("phoneNumber").asString());
+        }
        
         return "welcome";
     }

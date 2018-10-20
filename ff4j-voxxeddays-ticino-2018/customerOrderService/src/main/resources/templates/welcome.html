@@ -2,17 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Customer Order Service</title>
+<title>Order Service</title>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
  <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse" style="background-color:#008800">
 		<div class="container">
+		<img th:src="@{/img/shopping-cart.png}" style="padding-top:5px" />
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">Customer Order Service</a>
+			    <a class="navbar-brand" href="#" style="color:white">
+			      Customer Order Service
+			    </a>
 			</div>
 		</div>
 	</nav>
@@ -21,8 +24,12 @@
 
 		<div class="starter-template">
 			<h1> Customer Order Service </h1>
-			<li><span th:text="'Message: ' + ${message}"></span></li>
-			<li><span th:text="'Message: ' + ${ff4j_feature_TEST}"></span></li>
+			<div th:if="${featureCallUs}">
+				<a class="button" href="#">Call US</a>
+				<div th:if="${phoneNumber}">
+				<span th:text="'Phone Number ' + ${phoneNumber}"></span>
+  			</div>
+  			</div>
 			
 		</div>
 

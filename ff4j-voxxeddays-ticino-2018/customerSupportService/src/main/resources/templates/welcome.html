@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<title>Customer Order Service</title>
+<title>Support Service</title>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
  <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
  <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css" />
@@ -11,6 +11,7 @@
 
 	<nav class="navbar navbar-inverse" style="background-color:#000088">
 		<div class="container">
+		<img th:src="@{/img/support.png}" style="padding-top:5px" />
 			<div class="navbar-header" >
 				<a class="navbar-brand" href="#">Support Service</a>
 			</div>
@@ -20,10 +21,17 @@
 	<div class="container">
 
 		<div class="starter-template">
-			<h1> Customer Order Service </h1>
-			<li><span th:text="'Message: ' + ${message}"></span></li>
-			<li><span th:text="'Message: ' + ${ff4j_feature_TEST}"></span></li>
-			
+			<h1> Customer Support Service </h1>
+			<div th:if="${featureCallUs}">
+				<a class="button" href="#">Call US</a>
+				<div th:if="${phoneNumber}">
+				<span th:text="'Phone Number ' + ${phoneNumber}"></span>
+  			</div>
+  			<p/><br/>
+  			<div th:if="${openIssue}">
+				<a class="button" href="#">Open Issue</a>
+  			</div>
+  			</div>
 		</div>
 
 	</div>

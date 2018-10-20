@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:org.ff4j.springboot.DemoConsoleApp</config>
+		<config>java:org.ff4j.springboot.SpringBootApp</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

@@ -16,30 +16,38 @@
 
 	<dependencies>
 	
-		<dependency>
-			<groupId>org.ff4j</groupId>
-			<artifactId>ff4j-store-consul</artifactId>
-		</dependency>
-
+	   <!-- Dependencies for WEB -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-consul-all</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
+		</dependency>
+		
+		
+		
+		
+		
+		
+		
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-store-consul</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-store-cassandra</artifactId>
 		</dependency>
 		
 	</dependencies>

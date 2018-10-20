@@ -46,7 +46,12 @@
 				<artifactId>ff4j-store-consul</artifactId>
 				<version>${ff4j.version}</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>org.ff4j</groupId>
+				<artifactId>ff4j-store-cassandra</artifactId>
+				<version>${ff4j.version}</version>
+			</dependency>
+
 			<dependency>
 				<groupId>org.ff4j</groupId>
 				<artifactId>ff4j-web</artifactId>
@@ -58,19 +63,19 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.ff4j</groupId>
 				<artifactId>ff4j-spring-boot-starter</artifactId>
 				<version>${ff4j.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<artifactId>ff4j-spring-boot-web-api</artifactId>
 				<groupId>org.ff4j</groupId>
 				<version>${ff4j.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.ff4j</groupId>
 				<artifactId>ff4j-webapi-jersey2x</artifactId>
