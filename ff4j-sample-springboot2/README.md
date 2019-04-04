@@ -6,3 +6,5 @@ mvn spring-boot:run
 ```
 
 Afterwards the application will be available under [http://localhost:8080](http://localhost:8080)
+
+Note that this runs under both Java 8 and OpenJDK 11.
