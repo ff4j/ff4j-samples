@@ -41,7 +41,7 @@ public class HomeResource {
         StringBuilder response = new StringBuilder("<html><body><ul>");
         response.append("<li> To access the <b>FF4j Web Console</b> please go to <a href=\"./ff4j-web-console/\">/ff4j-web-console/</a>");
         response.append("<li> To access the <b>REST API</b> please go to <a href=\"./api/ff4j\">/api/ff4j</a>");
-        response.append("<li> To access the <b>Swagger API Documentation</b> please go to <a href=\"./swagger-ui.html\">/swagger-ui.html</a>");
+        response.append("<li> To access the <b>Swagger API Documentation</b> please go to <a href=\"./swagger/index.html\">/swagger/index.html</a>");
         response.append("<li> To access the <b>Swagger API Docs</b> please go to <a href=\"./v2/api-docs\">/v2/api-docs</a>");
         response.append("<p>Is <span style=\"color:red\">Awesome</span> feature activated ? from  ff4j.check(\"AwesomeFeature\") <span style=\"color:blue\">");
         response.append(ff4j.check("AwesomeFeature"));

@@ -95,6 +95,7 @@ public class FF4JConfiguration {
         apiConfig.setWebContext("/api");
         apiConfig.setPort(serverPort);
         apiConfig.setFF4j(getFF4j());
+        apiConfig.setDocumentation(true);
         return apiConfig;
     }
 }
