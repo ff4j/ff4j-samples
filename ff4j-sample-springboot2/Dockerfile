@@ -10,7 +10,7 @@ EXPOSE 8080
 ARG JAR_FILE=target/ff4j-sample-springboot2-1.8.jar
 
 # Add the application's jar to the container
-ADD ${JAR_FILE} sots-feature-flags.jar
+ADD ${JAR_FILE} ff4j-sample-springboot2-1.8.jar
 
 # Run the jar file
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/ff4j-sample-springboot2-1.8.jar"]

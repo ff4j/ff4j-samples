@@ -21,7 +21,7 @@
     <properties>
         <!--<java.version>11</java.version>-->
         <java.version>1.8</java.version>
-        <ff4j.version>1.9-SNAPSHOT</ff4j.version>
+        <ff4j.version>1.8</ff4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <docker.image.prefix>ff4j</docker.image.prefix>
         <start-class>org.ff4j.springboot2.Application</start-class>
@@ -119,6 +119,14 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.4.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
