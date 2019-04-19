@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.19.RELEASE</version>
+        <relativePath/>
+    </parent>
+    <groupId>org.ff4j.sample</groupId>
+    <artifactId>ff4j-sample-dynamodb</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ff4j-sample-dynamodb</name>
+    <description>Sample project for ff4j and dynamodb store</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <slf4j.version>1.7.12</slf4j.version>
+        <logback.version>1.1.3</logback.version>
+        <spring-boot.version>1.3.2.RELEASE</spring-boot.version>
+        <ff4j.version>1.9-SNAPSHOT</ff4j.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <artifactId>ff4j-core</artifactId>
+            <groupId>org.ff4j</groupId>
+            <version>${ff4j.version}</version>
+        </dependency>
+
+        <!-- Declare Servlet -->
+        <dependency>
+            <artifactId>ff4j-web</artifactId>
+            <groupId>org.ff4j</groupId>
+            <version>${ff4j.version}</version>
+        </dependency>
+
+        <!-- Declare Servlet -->
+        <dependency>
+            <artifactId>ff4j-store-aws-dynamodb</artifactId>
+            <groupId>org.ff4j</groupId>
+            <version>${ff4j.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-dynamodb</artifactId>
+            <version>1.11.507</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.5</version>
+        </dependency>
+
+
+        <!-- Container -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
