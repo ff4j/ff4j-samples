@@ -46,11 +46,11 @@ public class AuditTrailTest {
     
     @Test
     public void testSparkTimeSeries()  {
-        SimpleFF4jProvider p = new SimpleFF4jProvider();
-        p.populateRepository(100);
+        SimpleFF4jProvider sp = new SimpleFF4jProvider();
+        sp.populateRepository(100);
         
         EventQueryDefinition edf = buildQuery("08/25/2016 00:00:00 - 08/27/2016 00:00:00");
-        TimeSeriesChart tsc =  p.getFF4j().getEventRepository().getFeatureUsageHistory(edf, TimeUnit.HOURS);
+        TimeSeriesChart tsc =  sp.getFF4j().getEventRepository().getFeatureUsageHistory(edf, TimeUnit.HOURS);
         System.out.println(tsc.toString());
     }
    

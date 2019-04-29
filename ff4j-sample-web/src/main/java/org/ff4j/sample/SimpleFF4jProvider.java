@@ -41,7 +41,7 @@ import org.ff4j.web.FF4jProvider;
 public class SimpleFF4jProvider implements FF4jProvider {
 
     /** ff4j instance. */
-    private static FF4j ff4j;
+    private FF4j ff4j;
     
     private List < String > sources = new ArrayList<String>();
     

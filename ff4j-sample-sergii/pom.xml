@@ -24,14 +24,14 @@
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-spring-boot-autoconfigure</artifactId>
-            <version>1.6.5</version>
+            <version>1.9-SNAPSHOT</version>
         </dependency>
         
         <!-- Can also use ff4j-spring-boot-starter as enable webAPI -->
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-aop</artifactId>
-            <version>1.6.5</version>
+            <version>1.9-SNAPSHOT</version>
         </dependency>
 		
 		<!-- Run the Test -->
@@ -49,18 +49,22 @@
     </dependencies>
 	
     <build>
+<!--
         <sourceDirectory>src/main/java</sourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
+-->
+<!--
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+-->
     </build>
 	
 </project>

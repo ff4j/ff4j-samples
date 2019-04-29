@@ -8,17 +8,15 @@
 	<name>ff4j-sample-simplejdbc</name>
 	
 	<properties>
-	   <ff4j.version>1.6.5</ff4j.version>
+	   <ff4j.version>1.9-SNAPSHOT</ff4j.version>
 	</properties>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>org.ff4j</groupId>
 			<artifactId>ff4j-core</artifactId>
 			<version>${ff4j.version}</version>
 		</dependency>
-
 
         <!-- Admin Console -->
 		<dependency>
@@ -29,7 +27,7 @@
 		
 		<!-- RestAPI -->
 		<dependency>
-            <artifactId>ff4j-webapi-jersey1x</artifactId>
+            <artifactId>ff4j-webapi-jersey2x</artifactId>
             <groupId>org.ff4j</groupId>
            <version>${ff4j.version}</version>
         </dependency>
@@ -78,10 +76,6 @@
 					</connectors>
 				</configuration>
 			</plugin>
-			
 		</plugins>
-		
-		
 	</build>
-
 </project>

@@ -1,31 +1,35 @@
 package org.ff4j.sample;
 
-import static org.ff4j.audit.EventConstants.SOURCE_JAVA;
-import static org.ff4j.audit.EventConstants.TARGET_FEATURE;
-
-import java.util.ArrayList;
-
 import org.ff4j.FF4j;
 import org.ff4j.audit.Event;
 import org.ff4j.audit.EventConstants;
 import org.ff4j.core.Feature;
 import org.ff4j.web.ApiConfig;
-import org.ff4j.web.FF4JProvider;
-import org.ff4j.web.api.FF4JApiApplication;
+import org.ff4j.web.FF4jProvider;
+import org.ff4j.web.api.FF4jApiApplicationJersey2x;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.ArrayList;
+
+import static org.ff4j.audit.EventConstants.SOURCE_JAVA;
+import static org.ff4j.audit.EventConstants.TARGET_FEATURE;
 
 /**
  * Sample application
  *
  * @author <a href="mailto:cedrick.lunven@gmail.com">Cedrick LUNVEN</a>
  */
-public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements FF4JProvider {
+public class SimpleFF4JJerseyApplication extends FF4jApiApplicationJersey2x implements FF4jProvider {
 
-    /** Spring Bean. */
-    private static ApplicationContext ctx =  new ClassPathXmlApplicationContext("applicationContext.xml"); 
-    
-    /** current configuration. */
+    /**
+     * Spring Bean.
+     */
+    private static ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+
+    /**
+     * current configuration.
+     */
     private static ApiConfig conf;
 
     private static int getRandomOffset(int size) {
@@ -44,14 +48,35 @@ public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements F
         return event;
     }
 
-    private void initConf() {
+    /**
+     * {@inheritDoc}
+     */
+    public ApiConfig getApiConfig() {
+        if (conf == null) {
+            getWebApiConfiguration();
+        }
+        log.info("Returning API Config");
+        return conf;
+    }
+
+    @Override
+    public FF4j getFF4j() {
+        if (conf == null) {
+            getWebApiConfiguration();
+        }
+        log.info("Returning FF4J");
+        return conf.getFF4j();
+    }
+
+    @Override
+    protected ApiConfig getWebApiConfiguration() {
         conf = new ApiConfig();
         conf.setFF4j(ctx.getBean(FF4j.class));
         //conf.enableDocumentation();
         conf.setPort(8282);
         conf.setHost("localhost");
         conf.setWebContext("webapi");
-        
+
 //      // login/Password
 //      conf.setEnableAuthentication(true);
 //      conf.setEnableAuthorization(true);
@@ -72,25 +97,7 @@ public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements F
         }
 
         log.info(nbEvents + " event(s) generated.");
-    }
 
-    /** {@inheritDoc} */
- 
-    public ApiConfig getApiConfig() {
-        if (conf == null) {
-            initConf();
-        }
-        log.info("Returning API Config");
         return conf;
     }
-
-    @Override
-    public FF4j getFF4j() {
-        if (conf == null) {
-            initConf();
-        }
-        log.info("Returning FF4J");
-        return conf.getFF4j();
-    }
-
 }

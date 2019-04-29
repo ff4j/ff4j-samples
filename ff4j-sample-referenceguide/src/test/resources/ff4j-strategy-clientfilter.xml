@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration>
-<features>
+<features xmlns="http://www.ff4j.org/schema/ff4j"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		  xsi:schemaLocation="http://www.ff4j.org/schema/ff4j http://ff4j.org/schema/ff4j-1.2.0.xsd">
 
 	<feature uid="pingCluster" enable="true" description="limit client hosts">
 		<flipstrategy class="org.ff4j.strategy.ClientFilterStrategy" >

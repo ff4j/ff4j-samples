@@ -24,8 +24,8 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 
 import org.ff4j.FF4j;
-import org.ff4j.store.FeatureStoreSpringJdbc;
-import org.ff4j.store.PropertyStoreSpringJdbc;
+import org.ff4j.springjdbc.store.FeatureStoreSpringJdbc;
+import org.ff4j.springjdbc.store.PropertyStoreSpringJdbc;
 import org.ff4j.web.ApiConfig;
 import org.ff4j.web.FF4jDispatcherServlet;
 import org.springframework.beans.factory.annotation.Value;

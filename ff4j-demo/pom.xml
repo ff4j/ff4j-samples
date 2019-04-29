@@ -7,7 +7,7 @@
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<groupId>org.ff4j</groupId>
 	<artifactId>ff4j-demo</artifactId>
-	<version>1.6.4</version>
+	<version>1.9-SNAPSHOT</version>
 	<name>ff4j-demo</name>
 	<packaging>war</packaging>
 
@@ -18,7 +18,7 @@
 		<encoding>UTF-8</encoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<version.spring>4.0.5.RELEASE</version.spring>
+		<version.spring>5.1.6.RELEASE</version.spring>
 		<version.jersey>1.18.1</version.jersey>
 	</properties>
 	
@@ -51,7 +51,7 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<artifactId>ff4j-webapi-jersey1x</artifactId>
+			<artifactId>ff4j-webapi-jersey2x</artifactId>
 			<groupId>org.ff4j</groupId>
 			<version>${project.version}</version>
 		</dependency>

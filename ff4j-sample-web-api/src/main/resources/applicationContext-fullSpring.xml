@@ -42,7 +42,7 @@
     	<property name="group" 				value="myFeatureGroup"/>
 	</bean>
 	
-	<bean id="myReleaseStrategy" class="org.ff4j.strategy.ReleaseDateFlipStrategy">
+	<bean id="myReleaseStrategy" class="org.ff4j.strategy.time.ReleaseDateFlipStrategy">
     	<constructor-arg type="java.lang.String" value="${effectiveDate}"/>
 	</bean>
 	

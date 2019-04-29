@@ -4,17 +4,22 @@ import org.ff4j.FF4j;
 import org.ff4j.core.Feature;
 import org.ff4j.web.jersey2.store.FeatureStoreHttp;
 import org.ff4j.web.jersey2.store.PropertyStoreHttp;
+import org.junit.ClassRule;
+import org.junit.Ignore;
 import org.junit.Test;
+import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.strategy.Wait;
 
 /**
  * Sample tests to work with REST API.
  *
  * @author Cedrick LUNVEN (@clunven)
  */
+@Ignore
 public class SampleRestApiClientTest {
 
     private FF4j ff4j;
-    
+
     @Test
     public void setupFF4j() {
         
