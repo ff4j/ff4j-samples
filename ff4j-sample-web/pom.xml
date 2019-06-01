@@ -23,7 +23,7 @@
 	<parent>
 		<groupId>org.ff4j</groupId>
 		<artifactId>ff4j-parent</artifactId>
-		<version>1.7.1</version>
+		<version>1.9-SNAPSHOT</version>
 	</parent>
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
@@ -172,7 +172,9 @@
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>9.3.2.v20150730</version>
 				<configuration>
-					<contextPath>/sw</contextPath>
+					<webApp>
+						<contextPath>/sw</contextPath>
+					</webApp>
 
 					<stopPort>9965</stopPort>
 					<stopKey>foo</stopKey>

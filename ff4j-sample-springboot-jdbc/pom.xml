@@ -16,7 +16,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <ff4j.version>1.6.5</ff4j.version>
+        <ff4j.version>1.9-SNAPSHOT</ff4j.version>
     </properties>
     
 	<dependencies>

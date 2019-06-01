@@ -9,7 +9,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.ff4j.samples</groupId>
 	<artifactId>ff4j-sample-springboot</artifactId>
-	<version>1.7.1</version>
+	<version>1.9-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	
 	
@@ -25,7 +25,7 @@
 	<!-- ~~~~~~~~~~~~~~ -->
 	<properties>
 		<java.version>1.8</java.version>
-		<ff4j.version>1.7.1</ff4j.version>
+		<ff4j.version>1.9-SNAPSHOT</ff4j.version>
 		<junit.version>4.12</junit.version>
 		<docker.image.prefix>ff4j</docker.image.prefix>
 		<spring-boot.version>1.5.15.RELEASE</spring-boot.version>
@@ -84,6 +84,12 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>testcontainers</artifactId>
+			<version>1.8.3</version>
 			<scope>test</scope>
 		</dependency>
 
