@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ff4j</groupId>
-    <artifactId>ff4j-sample-springbootstarter</artifactId>
+    <artifactId>ff4j-sample-springboot-starter</artifactId>
     <packaging>jar</packaging>
 	
     <parent>
@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-spring-boot-starter</artifactId>
-            <version>1.7.1</version>
+            <version>1.9-SNAPSHOT</version>
         </dependency>
 		
     </dependencies>

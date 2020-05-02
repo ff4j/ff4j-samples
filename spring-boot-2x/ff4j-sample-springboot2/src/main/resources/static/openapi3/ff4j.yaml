@@ -1,0 +1,1341 @@
+openapi: 3.0.1
+info:
+  title: FF4J (ff4j.org) WebAPI
+  description: Administrate and operate all tasks on your features through this api
+  contact:
+    name: Cedrick Lunven
+    url: https://ff4j.github.io/
+    email: cedrick.lunven@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: "1.9"
+paths:
+  /ff4j/check/{uid}:
+    get:
+      tags:
+      - FF4j
+      summary: Check if a feature is enabled
+      description: This checks a specified feature to see if it is enabled. It returns
+        true if enabled, otherwise false.
+      operationId: check
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature to check
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: if feature is enabled
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: Invalid parameter
+        404:
+          description: feature has not been found
+    post:
+      tags:
+      - FF4j
+      summary: Advanced check feature toggle (parameterized)
+      description: Check if feature is enabled
+      operationId: checkPOST
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature to check
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: if feature is enabled
+          content:
+            application/json:
+              schema:
+                type: boolean
+        400:
+          description: Invalid parameter
+  /ff4j:
+    get:
+      tags:
+      - FF4j
+      summary: Display FF4J status overview
+      description: Display information related to <b>Monitoring</b>, <b>Security</b>,
+        <b>Cache</b> and <b>Store</b>
+      operationId: getStatus
+      responses:
+        200:
+          description: Success, return status of ff4j instance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ff4jStatus'
+  /ff4j/security:
+    get:
+      tags:
+      - FF4j
+      summary: Display security information (permissions manager)
+      description: Security is implemented through dedicated **AuthorizationsManager**
+        but it's not mandatory
+      operationId: getSecurityStatus
+      responses:
+        200:
+          description: Status of current ff4j security bean
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authorization'
+        404:
+          description: No security defined, no response
+  /ff4j/store/features/{uid}:
+    get:
+      tags:
+      - Features
+      summary: Read information about a feature
+      description: Allows a feature to be retrieved by its feature name (uid).
+      operationId: read
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Information about the feature
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/featureApiBean'
+        404:
+          description: Feature not found
+    put:
+      tags:
+      - Features
+      summary: Create or update a feature
+      description: Creates the feature if it does not exist, otherwise updates it
+      operationId: upsertFeature
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/featureApiBean'
+      responses:
+        201:
+          description: Feature has been created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        204:
+          description: No content, feature was updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+    delete:
+      tags:
+      - Features
+      summary: Delete a feature
+      description: Deletes feature by its feature name (uid).
+      operationId: deleteFeature
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: No content, feature was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Bad identifier
+        404:
+          description: Feature was not found
+  /ff4j/store/features/{uid}/removeGroup/{groupName}:
+    post:
+      tags:
+      - Features
+      summary: Remove a feature from a group
+      description: Removes the feature from a specified group
+      operationId: operationRemoveGroup
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      - name: groupName
+        in: path
+        description: The name of the group to remove the feature from
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Feature has been removed from the group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Invalid GroupName
+        404:
+          description: Feature was not found
+  /ff4j/store/features/{uid}/removerole/{role}:
+    post:
+      tags:
+      - Features
+      summary: Remove a role (permission) from a feature
+      description: Removes a role (permission) from the specified feature
+      operationId: operationRemoveRole
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      - name: role
+        in: path
+        description: The name of the role to remove from the feature
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Permission has been removed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Invalid RoleName
+        404:
+          description: Feature was not found
+  /ff4j/store/features/{uid}/grantrole/{role}:
+    post:
+      tags:
+      - Features
+      summary: Grant a permission on a feature
+      description: Grants a role to the specified feature
+      operationId: operationGrantRole
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      - name: role
+        in: path
+        description: The name of the role to grant the feature
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Permission has been granted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Invalid RoleName
+        404:
+          description: Feature was not found
+  /ff4j/store/features/{uid}/addGroup/{groupName}:
+    post:
+      tags:
+      - Features
+      summary: Add a feature to a group
+      description: Adds the feature to a specified group
+      operationId: operationAddGroup
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      - name: groupName
+        in: path
+        description: The name of the group to add the feature to
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Feature has been added to the group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Invalid GroupName
+        404:
+          description: Feature was not found
+  /ff4j/store/features/{uid}/enable:
+    post:
+      tags:
+      - Features
+      summary: Enable a feature
+      description: Enables a feature by setting it to on
+      operationId: operationEnable
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Feature has been enabled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        404:
+          description: Feature was not found
+  /ff4j/store/features/{uid}/disable:
+    post:
+      tags:
+      - Features
+      summary: Disable a feature
+      description: Disables the feature by setting it to off
+      operationId: operationDisable
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Feature has been disabled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        404:
+          description: Feature was not found
+  /ff4j/store:
+    get:
+      tags:
+      - Feature Store
+      summary: Display information about the Features
+      description: Retrieves information about the features
+      operationId: get
+      responses:
+        200:
+          description: Feature store information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/featureStoreApiBean'
+  /ff4j/store/cache:
+    get:
+      tags:
+      - Feature Store
+      summary: Display information about the Cache
+      description: Gets information about the Cache.
+      operationId: getStatus_1
+      responses:
+        200:
+          description: Cache information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cacheApiBean'
+        404:
+          description: No cache content provided
+    post:
+      tags:
+      - Feature Store
+      summary: Clear the Cache
+      description: Clears the cache
+      operationId: clear
+      responses:
+        200:
+          description: cache was cleared
+          content:
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        404:
+          description: No cache content provided
+  /ff4j/store/groups:
+    get:
+      tags:
+      - Feature Store
+      summary: Display information about the groups
+      description: Gets a list of the groups
+      operationId: readGroups
+      responses:
+        200:
+          description: Groups information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groupDescApiBean'
+  /ff4j/store/features:
+    get:
+      tags:
+      - Feature Store
+      summary: Get a list of all Features
+      description: Gets a list of all features
+      operationId: readFeatures
+      responses:
+        200:
+          description: Got all features
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/featureApiBean'
+  /ff4j/store/createSchema:
+    post:
+      tags:
+      - Feature Store
+      summary: Create underlying database schema for feature store
+      description: Creates the underlying database schema for the feature store
+      operationId: createSchema
+      responses:
+        200:
+          description: Feature store information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/featureStoreApiBean'
+  /ff4j/store/clear:
+    post:
+      tags:
+      - Feature Store
+      summary: Delete all Features in store
+      description: Deletes all features in the store
+      operationId: clearFeatures
+      responses:
+        200:
+          description: Feature store information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/featureStoreApiBean'
+  /ff4j/store/groups/{groupName}:
+    get:
+      tags:
+      - Groups
+      summary: Get information about a group
+      description: Gets information about a specified group
+      operationId: read_1
+      parameters:
+      - name: groupName
+        in: path
+        description: The name of the group to get information on
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Information about specified group
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        404:
+          description: Group was not found
+  /ff4j/store/groups/{groupName}/disable:
+    post:
+      tags:
+      - Groups
+      summary: Disable a group
+      description: Disable a specified group
+      operationId: operationDisableGroup
+      parameters:
+      - name: groupName
+        in: path
+        description: The name of the group to disable
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Group has been disabled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+  /ff4j/store/groups/{groupName}/enable:
+    post:
+      tags:
+      - Groups
+      summary: Enable a group
+      description: Enables a specified group
+      operationId: operationEnable_1
+      parameters:
+      - name: groupName
+        in: path
+        description: The name of the group to enable
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Group has been enabled
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+  /ff4j/monitoring:
+    get:
+      tags:
+      - Monitoring
+      summary: Display Monitoring information for all features
+      description: Displays **monitoring** information for **_all_** the features.
+      operationId: getMonitoringStatus
+      parameters:
+      - name: start
+        in: query
+        description: Start of window <br>(default is today 00:00)
+        schema:
+          type: integer
+          format: int64
+      - name: end
+        in: query
+        description: End  of window <br>(default is tomorrow 00:00)
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Status of event repository
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/eventRepositoryApiBean'
+        404:
+          description: No event repository defined
+  /ff4j/monitoring/{uid}:
+    get:
+      tags:
+      - Monitoring
+      summary: Display Monitoring for a single feature
+      description: Displays monitoring information for a single feature. Each feature
+        will display a pieChart and a barChart for hits
+      operationId: getFeatureMonitoring
+      parameters:
+      - name: uid
+        in: path
+        description: The name of the feature
+        required: true
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Start of window <br>(default is today 00:00)
+        schema:
+          type: integer
+          format: int64
+      - name: end
+        in: query
+        description: End  of window <br>(default is tomorrow 00:00)
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: Status of current ff4j monitoring bean
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureMonitoringApiBean'
+        404:
+          description: Feature not found
+  /ff4j/propertyStore/properties/{name}:
+    get:
+      tags:
+      - Properties
+      summary: Read information about a Property
+      description: Retrieves information about a specified property.
+      operationId: read_2
+      parameters:
+      - name: name
+        in: path
+        description: The name of the property to get
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: Information about the specified property
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/propertyApiBean'
+        404:
+          description: Property was not found
+    put:
+      tags:
+      - Properties
+      summary: Create or update a property
+      description: Create the property if it does not exist, otherwise update it
+      operationId: upsertProperty
+      parameters:
+      - name: name
+        in: path
+        description: The name of the property to create/update
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/propertyApiBean'
+      responses:
+        201:
+          description: Property was created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        204:
+          description: No content, property was updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+    delete:
+      tags:
+      - Properties
+      summary: Delete a Property
+      description: Deletes a specified property.
+      operationId: deleteProperty
+      parameters:
+      - name: name
+        in: path
+        description: The name of the property to delete
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: No content, Property was deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Bad identifier
+        404:
+          description: Property was not found
+  /ff4j/propertyStore/properties/{name}/update/{newValue}:
+    post:
+      tags:
+      - Properties
+      summary: Updates a property with a new value
+      description: Updates a single property with a new value
+      operationId: operationUpdate
+      parameters:
+      - name: name
+        in: path
+        description: The name of the property to update
+        required: true
+        schema:
+          type: string
+      - name: newValue
+        in: path
+        description: The new value to set on the property
+        required: true
+        schema:
+          type: string
+      responses:
+        204:
+          description: Property was updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        400:
+          description: Invalid new summary
+        404:
+          description: Property was not found
+  /ff4j/propertyStore:
+    get:
+      tags:
+      - Property Store
+      summary: Display information about the Properties
+      description: Displays information about all the properties
+      operationId: get_1
+      responses:
+        200:
+          description: Property store information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/propertyStoreApiBean'
+  /ff4j/propertyStore/cache:
+    get:
+      tags:
+      - Property Store
+      summary: Display information about the Cache
+      description: Gets the Cache status information
+      operationId: getStatus_2
+      responses:
+        200:
+          description: Cache status information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cacheApiBean'
+        404:
+          description: No cache content provided
+    post:
+      tags:
+      - Property Store
+      summary: Clear the property cache
+      description: Clears the property **cache**
+      operationId: clear_1
+      responses:
+        200:
+          description: Cache was cleared
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  metadata:
+                    type: object
+                    properties:
+                      empty:
+                        type: boolean
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: object
+                  status:
+                    type: integer
+                    format: int32
+                  entity:
+                    type: object
+        404:
+          description: No cache content provided
+  /ff4j/propertyStore/clear:
+    post:
+      tags:
+      - Property Store
+      summary: Delete all Properties in store
+      description: Deletes all the properties in the store
+      operationId: clearProperties
+      responses:
+        200:
+          description: Property store information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/propertyStoreApiBean'
+  /ff4j/propertyStore/createSchema:
+    post:
+      tags:
+      - Property Store
+      summary: Create underlying database schema for property store
+      description: Create a new database schema for the property store
+      operationId: createSchema_1
+      responses:
+        200:
+          description: Property store information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/propertyStoreApiBean'
+  /ff4j/propertyStore/properties:
+    get:
+      tags:
+      - Property Store
+      summary: Retrieve a list of all properties
+      description: Retrieves a list of all the properties
+      operationId: readProperties
+      responses:
+        200:
+          description: Got all the Properties
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/propertyApiBean'
+components:
+  schemas:
+    SerieInteger:
+      type: object
+      properties:
+        label:
+          type: string
+        value:
+          type: integer
+          format: int32
+        color:
+          type: string
+      description: series of the graph
+    authorization:
+      type: object
+      properties:
+        type:
+          type: string
+          description: authorization type
+        permissions:
+          type: array
+          description: list of authorization permissions
+          items:
+            type: string
+            description: list of authorization permissions
+      description: resource representation of a security object
+    barChart:
+      type: object
+      properties:
+        title:
+          type: string
+          description: title of the graph
+        series:
+          type: array
+          description: series of the graph
+          items:
+            $ref: '#/components/schemas/SerieInteger'
+      description: resource representation of a bar chart
+    cacheApiBean:
+      type: object
+      properties:
+        cacheProvider:
+          type: string
+          description: cache provider if a cache store is defined
+        cacheStore:
+          type: string
+          description: name of the cache store if it is defined
+        featureNames:
+          uniqueItems: true
+          type: array
+          description: list of features within the cache
+          items:
+            type: string
+            description: list of features within the cache
+        propertyNames:
+          uniqueItems: true
+          type: array
+          description: list of properties within the cache
+          items:
+            type: string
+            description: list of properties within the cache
+      description: cache resource representation
+    eventRepositoryApiBean:
+      required:
+      - barChart
+      - eventsPie
+      - hitCount
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: type of the repository
+        hitCount:
+          type: integer
+          description: total hit count for monitoring
+          format: int32
+        eventsPie:
+          $ref: '#/components/schemas/pieChart'
+        barChart:
+          $ref: '#/components/schemas/barChart'
+      description: resource representation of monitoring resources
+    featureStoreApiBean:
+      required:
+      - features
+      - groups
+      - numberOfFeatures
+      - numberOfGroups
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: type of the feature store. the classname of implementation
+        numberOfFeatures:
+          type: integer
+          description: number of features
+          format: int32
+        numberOfGroups:
+          type: integer
+          description: number of groups
+          format: int32
+        features:
+          type: array
+          description: list of the features
+          items:
+            type: string
+            description: list of the features
+        groups:
+          type: array
+          description: list of the groups
+          items:
+            type: string
+            description: list of the groups
+        cache:
+          $ref: '#/components/schemas/cacheApiBean'
+      description: feature store information
+    ff4jStatus:
+      required:
+      - autocreate
+      - uptime
+      - version
+      type: object
+      properties:
+        uptime:
+          type: string
+          description: uptime of the application
+        autocreate:
+          type: boolean
+          description: automatically create the feature if it does not exist in store
+        version:
+          type: string
+          description: current version of ff4j library
+        featuresStore:
+          $ref: '#/components/schemas/featureStoreApiBean'
+        eventRepository:
+          $ref: '#/components/schemas/eventRepositoryApiBean'
+        authorizationsManager:
+          $ref: '#/components/schemas/authorization'
+      description: ff4j status information
+    pieChart:
+      type: object
+      properties:
+        title:
+          type: string
+          description: title of the pie chart graph
+        sectors:
+          type: array
+          description: sectors of the pie chart graph
+          items:
+            $ref: '#/components/schemas/pieSector'
+      description: pie chart implementation
+    pieSector:
+      type: object
+      properties:
+        label:
+          type: string
+          description: label for this pie sector
+        value:
+          type: number
+          description: the target value as a decimal number (0.0)
+          format: double
+        color:
+          type: string
+          description: the target color as a hexidecimal number in RGB HTML format.
+            Default is white (FFFFFF)
+      description: a pie sector implementation
+    featureApiBean:
+      required:
+      - enable
+      - uid
+      type: object
+      properties:
+        uid:
+          type: string
+          description: unique feature identifier or feature name
+        enable:
+          type: boolean
+          description: status of the feature
+        description:
+          type: string
+          description: description of the feature
+        group:
+          type: string
+          description: Group of the feature if it exists. This is just a single group
+        permissions:
+          type: array
+          description: Role and profiles authorized (permissions) on the feature
+          items:
+            type: string
+            description: Role and profiles authorized (permissions) on the feature
+        flippingStrategy:
+          $ref: '#/components/schemas/flippingStrategyApiBean'
+        customProperties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/propertyApiBean'
+          description: Custom properties if they exist
+      description: Representation of a feature
+    flippingStrategyApiBean:
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: type of the flipping strategy. the classname of implementation
+        initParams:
+          type: object
+          additionalProperties:
+            type: string
+            description: init parameters
+          description: init parameters
+      description: the flipping strategy
+    propertyApiBean:
+      required:
+      - name
+      - type
+      - value
+      type: object
+      properties:
+        name:
+          type: string
+          description: the unique property name
+        description:
+          type: string
+          description: the property description
+        type:
+          type: string
+          description: the type of the property. classname of implementation
+        value:
+          type: string
+          description: the property value
+        fixedValues:
+          uniqueItems: true
+          type: array
+          description: a set of fixed values
+          items:
+            type: string
+            description: a set of fixed values
+      description: property implementation
+    groupDescApiBean:
+      required:
+      - features
+      - groupName
+      type: object
+      properties:
+        groupName:
+          type: string
+          description: name of current group
+        features:
+          type: array
+          description: List of features in the current group
+          items:
+            type: string
+            description: List of features in the current group
+      description: Description of a group
+    FeatureMonitoringApiBean:
+      required:
+      - barChart
+      - eventsPie
+      - featureName
+      - hitCount
+      type: object
+      properties:
+        featureName:
+          type: string
+          description: name of the feature
+        hitCount:
+          type: integer
+          description: total hit of the features
+          format: int32
+        eventsPie:
+          $ref: '#/components/schemas/pieChart'
+        barChart:
+          $ref: '#/components/schemas/barChart'
+      description: monitoring data of the features
+    propertyStoreApiBean:
+      required:
+      - numberOfProperties
+      - properties
+      - type
+      type: object
+      properties:
+        type:
+          type: string
+          description: type of the property store. classname of implementation
+        numberOfProperties:
+          type: integer
+          description: the number of properties
+          format: int32
+        properties:
+          uniqueItems: true
+          type: array
+          description: the list of property names
+          items:
+            type: string
+            description: the list of property names
+        cache:
+          $ref: '#/components/schemas/cacheApiBean'
+      description: property store implementation

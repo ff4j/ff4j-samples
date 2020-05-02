@@ -1,9 +1,9 @@
 package org.ff4j.hello;
 
 import org.ff4j.FF4j;
-import org.ff4j.web.api.FF4JProvider;
+import org.ff4j.web.FF4jProvider;
 
-public class MyFF4jProvider implements FF4JProvider {
+public class MyFF4jProvider implements FF4jProvider {
 
     private final FF4j ff4j;
    

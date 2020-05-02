@@ -9,8 +9,8 @@
 
     <parent>
 		<groupId>org.ff4j.samples</groupId>
-		<artifactId>demo-voxxeddays</artifactId>
-		<version>1.7.1</version>
+		<artifactId>ff4j-voxxeddays-ticino-2018</artifactId>
+		<version>1.9-SNAPSHOT</version>
 	</parent>
 
 	<!-- ~~~~~~~~~~~~~~~~ -->

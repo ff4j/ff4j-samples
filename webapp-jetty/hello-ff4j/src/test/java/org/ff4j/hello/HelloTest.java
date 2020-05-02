@@ -67,14 +67,14 @@ public class HelloTest {
         FF4j ff4j = new FF4j("ff4j.xml");
         assertTrue(ff4j.exist("userStory3_1"));
         assertTrue(ff4j.exist("userStory3_2"));
-        assertTrue(ff4j.getStore().readAllGroups().contains("sprint_3"));
+        assertTrue(ff4j.getFeatureStore().readAllGroups().contains("sprint_3"));
         assertEquals("sprint_3", ff4j.getFeature("userStory3_1").getGroup());
         assertEquals("sprint_3", ff4j.getFeature("userStory3_2").getGroup());
         assertFalse(ff4j.check("userStory3_1"));
         assertFalse(ff4j.check("userStory3_2"));
         
         // When, toggle group (fine grained are within "Store"
-        ff4j.getStore().enableGroup("sprint_3");
+        ff4j.getFeatureStore().enableGroup("sprint_3");
         
         // Then
         assertTrue(ff4j.check("userStory3_1"));

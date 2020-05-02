@@ -1,13 +1,5 @@
 package org.ff4j.demo;
 
-import static org.ff4j.audit.EventConstants.ACTION_CHECK_OK;
-import static org.ff4j.audit.EventConstants.SOURCE_JAVA;
-import static org.ff4j.audit.EventConstants.TARGET_FEATURE;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.ff4j.FF4j;
 import org.ff4j.audit.Event;
 import org.ff4j.audit.EventConstants;
@@ -17,16 +9,22 @@ import org.ff4j.utils.TimeUtils;
 import org.ff4j.utils.Util;
 import org.ff4j.web.ApiConfig;
 import org.ff4j.web.FF4jProvider;
-import org.ff4j.web.api.FF4JApiApplication;
+import org.ff4j.web.api.FF4jApiApplicationJersey2x;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.ff4j.audit.EventConstants.*;
 
 /**
  * Sample application
  *
  * @author <a href="mailto:cedrick.lunven@gmail.com">Cedrick LUNVEN</a>
  */
-public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements FF4jProvider {
+public class SimpleFF4JJerseyApplication extends FF4jApiApplicationJersey2x implements FF4jProvider {
 
     /** Spring Bean. */
     private static ApplicationContext ctx =  new ClassPathXmlApplicationContext("applicationContext.xml"); 
@@ -99,11 +97,20 @@ public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements F
         }
     }
 
-    private void initConf() {
+    @Override
+    public FF4j getFF4j() {
+        if (conf == null) {
+            getWebApiConfiguration();
+        }
+        return conf.getFF4j();
+    }
+
+    @Override
+    protected ApiConfig getWebApiConfiguration() {
         conf = new ApiConfig(ctx.getBean(FF4j.class));
         conf.setDocumentation(true);
-        
-      
+
+
         // login/Password
         //conf.setEnableAuthentication(true);
         //conf.setEnableAuthorization(true);
@@ -114,17 +121,17 @@ public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements F
         //         // ApiKeys (identification only)
         // conf.createApiKey("12345", false, false);
         // conf.createApiKey("abcde", true, true);
-        
+
         sources = new ArrayList<String>();
         sources.add(SOURCE_JAVA);
         sources.add(EventConstants.SOURCE_SSH);
         sources.add(EventConstants.SOURCE_WEB);
         sources.add(EventConstants.SOURCE_WEBAPI);
-        
+
         hostNames = new ArrayList<String>();
         hostNames.add("node1");
         hostNames.add("node2");
-        
+
         users = new ArrayList<String>();
         users.add("Pierre");
         users.add("Paul");
@@ -132,23 +139,7 @@ public class SimpleFF4JJerseyApplication extends FF4JApiApplication implements F
         System.out.println("initConf1");
         // Create random DATA for today
         populateRepository(100);
-    }
 
-    /** {@inheritDoc} */
-    @Override
-    public ApiConfig getApiConfig() {
-        if (conf == null) {
-            initConf();
-        }
         return conf;
     }
-
-    @Override
-    public FF4j getFF4j() {
-        if (conf == null) {
-            initConf();
-        }
-        return conf.getFF4j();
-    }
-
 }
