@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- ~~~~~~~~~~~~~~~ -->
+	<!-- ~ COORDINATES ~ -->
+	<!-- ~~~~~~~~~~~~~~~ -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.ff4j.samples</groupId>
+	<artifactId>ff4j-springboot1x-elastic</artifactId>
+	<version>1.8.5</version>
+	<packaging>jar</packaging>
+
+	<parent>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<groupId>org.springframework.boot</groupId>
+		<version>1.5.15.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<!-- ~~~~~~~~~~~~~~ -->
+	<!-- ~ PROPERTIES ~ -->
+	<!-- ~~~~~~~~~~~~~~ -->
+	<properties>
+		<ff4j.version>1.8.5-SNAPSHOT</ff4j.version>
+		<spring-boot.version>1.5.15.RELEASE</spring-boot.version>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<!-- ~~~~~~~~~~~~~~~~ -->
+	<!-- ~ DEPENDENCIES ~ -->
+	<!-- ~~~~~~~~~~~~~~~~ -->
+	<dependencies>
+
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-store-elastic</artifactId>
+			<version>${ff4j.version}</version>
+		</dependency>
+		<!-- Enfore last version of Elastic Search -->
+		<dependency>
+			<groupId>org.elasticsearch</groupId>
+			<artifactId>elasticsearch</artifactId>
+			<version>7.6.2</version>
+		</dependency>
+		
+		<!-- Enforce Thymeleaf 2.x -->
+		<dependency>
+			<artifactId>ff4j-web</artifactId>
+			<groupId>org.ff4j</groupId>
+			<version>1.7.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>jstl</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-utils-json</artifactId>
+			<version>${ff4j.version}</version>
+		</dependency>
+		
+
+		<!-- REST API (with springwebmvc) -->
+		<dependency>
+			<artifactId>ff4j-spring-boot-web-api</artifactId>
+			<groupId>org.ff4j</groupId>
+			<version>1.7.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- Client HTTP for test -->
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-webapi-jersey2x</artifactId>
+			<version>${ff4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-webapi-jersey2x</artifactId>
+			<version>${ff4j.version}</version>
+		</dependency>
+
+		<!-- Support for tests -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

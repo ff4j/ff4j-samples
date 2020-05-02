@@ -1,0 +1,5 @@
+server:
+  port: ${PORT:5000}
+  
+elastic:
+  url: http://localhost:9200

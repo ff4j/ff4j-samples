@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>demo-console</artifactId>
+	<name> + Admin Console</name>
+	<packaging>jar</packaging>
+
+    <parent>
+		<groupId>org.ff4j.samples</groupId>
+		<artifactId>demo-voxxeddays</artifactId>
+		<version>1.7.1</version>
+	</parent>
+
+	<!-- ~~~~~~~~~~~~~~~~ -->
+	<!-- ~ DEPENDENCIES ~ -->
+	<!-- ~~~~~~~~~~~~~~~~ -->
+	<dependencies>
+
+        <!--  Dummy SpringBoot APP with Hello WORLD -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!--  Enable Spring Cloud and Consul Directory -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-consul-all</artifactId>
+		</dependency>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- Enable ff4j, will be my ADMIN CONSOLE -->
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-spring-boot-starter</artifactId>
+		</dependency>
+		
+		
+		
+		
+		
+		
+		
+		
+		<!-- Pick the storage technologies I need -->
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-store-consul</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.ff4j</groupId>
+			<artifactId>ff4j-store-cassandra</artifactId>
+		</dependency>
+		
+		
+	
+	</dependencies>
+
+
+</project>
