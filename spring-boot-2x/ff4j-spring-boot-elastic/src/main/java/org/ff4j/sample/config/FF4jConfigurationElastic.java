@@ -22,7 +22,6 @@ import org.ff4j.elastic.ElasticQueryHelper;
 import org.ff4j.elastic.store.EventRepositoryElastic;
 import org.ff4j.elastic.store.FeatureStoreElastic;
 import org.ff4j.elastic.store.PropertyStoreElastic;
-import org.ff4j.spring.boot.web.api.config.EnableFF4jSwagger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,16 +29,11 @@ import org.springframework.context.annotation.Configuration;
 import io.searchbox.client.JestClient;
 
 /**
- * Created by Paul
- *
- * Adapt for a demo on Elastic.
- *
- * @author <a href="mailto:paul58914080@gmail.com">Paul Williams</a>
- * @author Cedrick LUNVEN (@clunven)
+ * Definition of FF4j Bean. This definition should be done not only
+ * in the backend with web console and rest API but also in your microservices.
  */
 @Configuration
-@EnableFF4jSwagger
-public class FF4JConfiguration {
+public class FF4jConfigurationElastic {
     
     @Value("${elastic.url}")
     private String elasticUrl;
@@ -49,9 +43,7 @@ public class FF4JConfiguration {
         try {
             return ElasticQueryHelper.createDefaultJestClient(new URL(elasticUrl));
         } catch (MalformedURLException e) {
-           throw new IllegalArgumentException(
-                   "Invalid url for elastic "+ 
-                   "please check 'elastic.url' property",e);
+           throw new IllegalArgumentException("Invalid url for elastic please check 'elastic.url' property",e);
         }
     }
     
@@ -67,6 +59,8 @@ public class FF4JConfiguration {
     @Bean
     public FF4j getFF4j(JestClient jestClient) {
         FF4j ff4j = new FF4j();
+        // we enable audit to have KPI in the monitoring 
+        ff4j.audit(true);
         ff4j.setFeatureStore(new FeatureStoreElastic(jestClient));
         ff4j.setPropertiesStore(new PropertyStoreElastic(jestClient));
         ff4j.setEventRepository(new EventRepositoryElastic(jestClient));

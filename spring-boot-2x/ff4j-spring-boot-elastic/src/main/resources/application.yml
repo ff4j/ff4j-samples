@@ -1,5 +1,6 @@
 server:
   port: ${PORT:5000}
-  
+
+# Custom Configuration Keys  
 elastic:
   url: http://localhost:9200

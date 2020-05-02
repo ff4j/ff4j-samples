@@ -18,9 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration;
 
 /**
- * Created by Paul
- *
- * @author <a href="mailto:paul58914080@gmail.com">Paul Williams</a>
+ * Main class.
  */
 @SpringBootApplication(exclude = ThymeleafAutoConfiguration.class)
 public class Application {
