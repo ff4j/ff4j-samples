@@ -26,24 +26,14 @@ import org.springframework.context.annotation.Configuration;
  * in the backend with web console and rest API but also in your microservices.
  */
 @Configuration
-public class FF4jConfigurationElastic {
+public class FF4jConfig {
     
-    /**
-     * Initiate ff4j pointing to Elastic.
-     *
-     * Default index is ff4j_features but you can override the indexName
-     * ff4j.setFeatureStore(new FeatureStoreElastic(jestClient, "indexName"));
-     * 
-     * @param jestClient
-     * @return
-     */
     @Bean
     public FF4j getFF4j() {
         FF4j ff4j = new FF4j();
         ff4j.setFeatureStore(new InMemoryFeatureStore());
         ff4j.setPropertiesStore(new InMemoryPropertyStore());
         ff4j.setEventRepository(new InMemoryEventRepository());
-        // we enable audit to have KPI in the monitoring 
         ff4j.audit(true);
         return ff4j;
     }

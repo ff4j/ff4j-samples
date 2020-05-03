@@ -1,6 +1,4 @@
-package org.ff4j.sample.rest;
-
-import javax.annotation.PostConstruct;
+package org.ff4j.sample;
 
 import org.ff4j.FF4j;
 import org.ff4j.core.Feature;
@@ -34,22 +32,7 @@ public class HomeController {
     @Autowired
     public FF4j ff4j;
     
-    @PostConstruct
-    public void populateDummyFeatureForMySample() {
-        if (!ff4j.exist(FEATURE_SHOW_WEBCONSOLE)) {
-            ff4j.createFeature(new Feature(FEATURE_SHOW_WEBCONSOLE, true));
-        }
-        if (!ff4j.exist(FEATURE_SHOW_REST_API)) {
-            ff4j.createFeature(new Feature(FEATURE_SHOW_REST_API, true));
-        }
-        if (!ff4j.exist(FEATURE_SHOW_USERNAME)) {
-            ff4j.createFeature(new Feature(FEATURE_SHOW_USERNAME, true));
-        }
-        if (!ff4j.getPropertiesStore().existProperty(PROPERTY_USERNAME)) {
-            ff4j.createProperty(new PropertyString(PROPERTY_USERNAME, "cedrick"));
-        }
-        LOGGER.info(" + Features and properties have been created for the sample.");
-    }
+    private boolean init = false;
     
     /**
      * Rendering an HTML output for the home page.
@@ -59,6 +42,7 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = "text/html")
     public String get() {
         LOGGER.info(" + Rendering home page...");
+        if (!init) populateDummyFeatureForMySample();
         
         StringBuilder htmlPage = new StringBuilder("<html><body><ul>");
         htmlPage.append("<h2>This is home page.</h2>");
@@ -88,5 +72,22 @@ public class HomeController {
         htmlPage.append("</ul></body></html>");
         
         return htmlPage.toString();
+    }
+    
+    private void populateDummyFeatureForMySample() {
+        if (!ff4j.exist(FEATURE_SHOW_WEBCONSOLE)) {
+            ff4j.createFeature(new Feature(FEATURE_SHOW_WEBCONSOLE, true));
+        }
+        if (!ff4j.exist(FEATURE_SHOW_REST_API)) {
+            ff4j.createFeature(new Feature(FEATURE_SHOW_REST_API, true));
+        }
+        if (!ff4j.exist(FEATURE_SHOW_USERNAME)) {
+            ff4j.createFeature(new Feature(FEATURE_SHOW_USERNAME, true));
+        }
+        if (!ff4j.getPropertiesStore().existProperty(PROPERTY_USERNAME)) {
+            ff4j.createProperty(new PropertyString(PROPERTY_USERNAME, "cedrick"));
+        }
+        LOGGER.info(" + Features and properties have been created for the sample.");
+        init = true;
     }
 }

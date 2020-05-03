@@ -1,0 +1,29 @@
+{
+  "properties": [
+    {
+      "name": "ff4j.webconsole.enable",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true"
+    },
+    {
+      "name": "ff4j.webconsole.url",
+      "type": "java.lang.String",
+      "defaultValue": "/ff4j-web-console"
+    },
+    {
+      "name": "ff4j.webconsole.secure",
+      "type": "java.lang.Boolean",
+      "defaultValue": "true"
+    },
+    {
+      "name": "ff4j.webconsole.username",
+      "type": "java.lang.String",
+      "defaultValue": "admin"
+    },
+    {
+      "name": "ff4j.webconsole.password",
+      "type": "java.lang.String",
+      "defaultValue": "ff4j"
+    }],
+  "hints": []
+}

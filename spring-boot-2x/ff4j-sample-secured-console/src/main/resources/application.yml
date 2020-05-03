@@ -1,0 +1,11 @@
+server:
+  port: 5001
+  
+# Dedicated key for ff4j
+ff4j:
+  webconsole:
+    enable: true
+    url: /ff4j-web-console
+    secure: true
+    username: admin
+    password: ff4j
