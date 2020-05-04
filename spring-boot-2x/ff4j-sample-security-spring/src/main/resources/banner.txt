@@ -1,0 +1,19 @@
+${AnsiColor.GREEN}   _____  _____  _____     __ 
+${AnsiColor.GREEN} _/ ____\/ ____\/  |  |   |__|
+${AnsiColor.GREEN} \   __\\   __\/   |  |_  |  |
+${AnsiColor.GREEN} |  |   |  | /    ^   /  |  |
+${AnsiColor.GREEN} |__|   |__| \____   /\__|  |
+${AnsiColor.GREEN}                  |__\______|
+
+${AnsiColor.BLUE}Brought to you by FF4j Development team
+
+If you like it a ⭐ on github = THANK YOU ! https://github.com/ff4j/ff4j/stargazers
+
+Users in the app:
+-----------------------------------------------------------
+user/user           : has only user permissions
+superuser/superuser : has only user and super permissions
+admin/admin         : has admin permission
+-----------------------------------------------------------
+
+Application is listening on : http://localhost:5002

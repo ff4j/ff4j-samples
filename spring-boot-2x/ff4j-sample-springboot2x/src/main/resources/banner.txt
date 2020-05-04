@@ -1,0 +1,11 @@
+${AnsiColor.GREEN}   _____  _____  _____     __ 
+${AnsiColor.GREEN} _/ ____\/ ____\/  |  |   |__|
+${AnsiColor.GREEN} \   __\\   __\/   |  |_  |  |
+${AnsiColor.GREEN} |  |   |  | /    ^   /  |  |
+${AnsiColor.GREEN} |__|   |__| \____   /\__|  |
+${AnsiColor.GREEN}                  |__\______|
+
+${AnsiColor.BLUE}Brought to you by FF4j Developments team
+${AnsiColor.BLUE}If you like us, consider to give a ⭐ on github, that helps s! https://github.com/ff4j/ff4j/stargazers
+
+${AnsiColor.BLUE}The application should be available on ${AnsiColor.RED}http://localhost:8080  

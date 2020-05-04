@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.ff4j</groupId>
-    <artifactId>ff4j-sample-springboot2x</artifactId>
+    <artifactId>ff4j-sample-security-spring</artifactId>
     <packaging>jar</packaging>
     <version>1.8.5</version>
     
@@ -24,11 +24,23 @@
             <artifactId>ff4j-spring-boot-starter</artifactId>
             <version>${ff4j.version}</version>
         </dependency>
-          <dependency>
+        <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-web</artifactId>
             <version>${ff4j.version}</version>
         </dependency>
+ 
+        <!-- Enabling Spring Security and bridge with ff4j -->
+        <dependency>
+            <groupId>org.ff4j</groupId>
+            <artifactId>ff4j-security-spring</artifactId>
+            <version>${ff4j.version}</version>
+        </dependency>
+       <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		
     </dependencies>
     
     <build>
@@ -37,19 +49,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.13</version>
-				<configuration>
-					<repository>clunven/ff4j-sample</repository>
-        		    <tag>${project.version}</tag>
-        		    <buildArgs>
-						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-					</buildArgs>
-				</configuration>
-			</plugin>
-	    </plugins>
+        </plugins>
     </build>
 
 </project>

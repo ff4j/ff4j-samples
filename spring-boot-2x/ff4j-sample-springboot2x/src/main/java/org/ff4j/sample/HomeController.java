@@ -69,11 +69,11 @@ public class HomeController {
         
         if (ff4j.check(FEATURE_SHOW_WEBCONSOLE)) {
             htmlPage.append("<li> To access the <b>WEB CONSOLE</b> "
-                    + "please go to <a href=\"./ff4j-web-console/home\"> ff4j-web-console </a></li>");
+                    + "please go to <a href=\"./ff4j-web-console/home\" target=\"_blank\"> ff4j-web-console </a></li>");
         }
         if (ff4j.check(FEATURE_SHOW_REST_API)) {
             htmlPage.append("<li> To access the <b>REST API</b> "
-                    + "please go to <a href=\"./api/ff4j\">ff4j-rest-api </a>");
+                    + "please go to <a href=\"./api/ff4j\" target=\"_blank\">ff4j-rest-api </a>");
         }
         if (ff4j.check(FEATURE_SHOW_USERNAME)) {
             if (ff4j.getPropertiesStore().existProperty(PROPERTY_USERNAME)) {
