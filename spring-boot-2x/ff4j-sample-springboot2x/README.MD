@@ -20,7 +20,7 @@ mvn clean package dockerfile:build
 
 Once the image is built you can run it with
 ```
-docker run -p 8080:8080 clunven/ff4j-sample:1.8.5
+docker run -p 8080:8080 ff4j/ff4j-sample-springboot2x:1.8.5
 ```
 
 
