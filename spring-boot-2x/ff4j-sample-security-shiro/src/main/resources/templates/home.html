@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>FF4j - SpringBoot2x - Shiro</title>
+        <!--/*/ <th:block th:include="fragments/head :: head"/> /*/-->
+    </head>
+    <body>
+        <div class="container">
+        
+        <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation" class="active" th:unless="${subject.authenticated}"> <a th:href="@{/login.html}" >Login</a></li>
+            <li role="presentation" th:if="${subject.authenticated}">
+                <form id="logoutForm" th:action="@{/logout}" method="post">
+                    <input type="submit" class="btn btn-danger" value="Logout"/>
+                </form>
+            </li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">FF4j Sample SpringBoot + Shiro</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>AuthorizationManager</h1>
+        <p class="lead">With FF4j you can define an authorization to evaluate feature
+        toggle based on roles and permissions of current user.</p>
+        <p><a class="btn btn-lg btn-success" href="/ff4j-web-console/home" role="button">Access FF4j Console</a></p>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-lg-6">
+          <div th:if="${subject.authenticated}">
+          	<h4 th:text="'Your are authenticated as: ' + ${subject.principal}"></h4>
+          </div>
+          <h4><li><a th:href="@{/account-info}">Page for admin only (or 403)</a></li>&nbsp</h4>
+          <div th:if="${feature_public}">
+            <h4><li>Feature <b style="color:blue">feature_public</b> is available if not authenticated</li></h4>
+          </div>
+          <div th:if="${feature_superuser}">
+            <h4><li>Feature <b style="color:orange">feature_superuser</b> is visible for superuser </li></h4>
+          </div>
+          <div th:if="${feature_admin}">
+            <h4><li>Feature <b style="color:red">feature_admin</b> for (superuser|admin)</li> </h4>
+          </div>
+          
+        </div>
+      </div>
+                       
+        </div>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    </body>
+</html>

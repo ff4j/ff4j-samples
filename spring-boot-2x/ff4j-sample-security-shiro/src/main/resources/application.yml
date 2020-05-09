@@ -1,0 +1,14 @@
+server:
+  port: 5003
+  
+# Settings for SHIRO
+shiro:
+  web:
+    enabled: true
+  # Login
+  loginUrl: /login.html
+  # Let Shiro Manage the sessions 
+  userNativeSessionManager: true
+  sessionManager:
+   # disable URL session rewriting
+   sessionIdUrlRewritingEnabled: false
