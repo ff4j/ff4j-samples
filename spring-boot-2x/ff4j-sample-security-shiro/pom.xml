@@ -7,10 +7,10 @@
     <groupId>org.ff4j</groupId>
     <artifactId>ff4j-sample-security-shiro</artifactId>
     <packaging>jar</packaging>
-    <version>1.8.5</version>
+    <version>1.8.6</version>
     
     <properties>
-      <ff4j.version>1.8.6-SNAPSHOT</ff4j.version>
+      <ff4j.version>1.8.6</ff4j.version>
     </properties>
     
     <parent>
@@ -30,9 +30,8 @@
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-spring-boot-starter</artifactId>
-            <version>1.8.5</version>
+            <version>${ff4j.version}</version>
         </dependency>
-        
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-web</artifactId>
