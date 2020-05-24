@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sasip</groupId>
+	<artifactId>ff4j-sample-springboot2x-jdbc-postgres</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>ff4j-sample-springboot2x-jdbc-postgres</name>
+	<description>Demo project for FF4J Server</description>
+
+	<properties>
+    	<ff4j.version>1.8.6</ff4j.version>
+    </properties>
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.7.RELEASE</version>
+    </parent>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.ff4j</groupId>
+            <artifactId>ff4j-spring-boot-starter</artifactId>
+            <version>${ff4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ff4j</groupId>
+            <artifactId>ff4j-web</artifactId>
+            <version>${ff4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.ff4j</groupId>
+            <artifactId>ff4j-store-springjdbc</artifactId>
+            <version>${ff4j.version}</version>
+        </dependency>
+        
+        <dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            </plugins>
+	</build>
+
+</project>
