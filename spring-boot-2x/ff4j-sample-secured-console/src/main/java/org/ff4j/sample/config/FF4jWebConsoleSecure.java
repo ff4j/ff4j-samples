@@ -45,7 +45,8 @@ public class FF4jWebConsoleSecure extends WebSecurityConfigurerAdapter {
             .antMatchers("/").permitAll()
             .antMatchers(webConsoleUrl + "/**").hasRole("ADMIN")
             .and()
-            .httpBasic();
+            .formLogin();
+            //.httpBasic();
     }
 
 }
