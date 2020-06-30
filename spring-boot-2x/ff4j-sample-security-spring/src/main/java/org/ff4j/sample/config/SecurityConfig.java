@@ -18,17 +18,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     throws Exception {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         auth.inMemoryAuthentication()
-            .withUser("user").password(encoder.encode("user")).authorities("user").and()
-            .withUser("superuser").password(encoder.encode("superuser")).authorities("user", "superuser").and()
-            .withUser("admin").password(encoder.encode("admin")).authorities("user", "admin");
+            .withUser("user").password(encoder.encode("user"))
+                             .authorities("user").and()
+            .withUser("superuser").password(encoder.encode("superuser"))
+                             .authorities("user", "superuser").and()
+            .withUser("admin").password(encoder.encode("admin"))
+                             .authorities("user", "admin");
     }
 
     /** {@inheritDoc} */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable()
+            .authorizeRequests()
             .anyRequest().authenticated()
-            .and().httpBasic();
+            .and().formLogin();
     }
 
 }
