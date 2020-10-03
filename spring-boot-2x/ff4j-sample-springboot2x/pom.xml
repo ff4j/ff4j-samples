@@ -6,10 +6,10 @@
     <groupId>org.ff4j</groupId>
     <artifactId>ff4j-sample-springboot2x</artifactId>
     <packaging>jar</packaging>
-    <version>1.8.9</version>
+    <version>1.8.10</version>
     
     <properties>
-    	<ff4j.version>1.8.9</ff4j.version>
+    	<ff4j.version>1.8.10-SNAPSHOT</ff4j.version>
     </properties>
     
     <parent>
@@ -38,9 +38,9 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.13</version>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.4.13</version>
 				<configuration>
 					<repository>ff4j/${project.artifactId}</repository>
         		    <tag>${project.version}</tag>
