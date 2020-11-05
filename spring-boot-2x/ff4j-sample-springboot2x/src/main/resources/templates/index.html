@@ -1,0 +1,150 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+ <meta name="author" 			 			 content="Cedrick LUNVEN" />
+ <meta name="title" 			             content="sDemo Application" />
+ <meta name="application-name"              content="FF4J Administration Console" />
+ <link href="/ff4j-web-console/ff4j-static/img/icons/ff4j-ico.png" rel="icon" />
+ <link href="/ff4j-web-console/ff4j-static/img/icons/ff4j-ico.png" rel="shortcut icon" />
+ <link href="/ff4j-web-console/ff4j-static/img/icons/ff4j-ico.png" rel="apple-touch-icon" />
+ 
+ <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/bootstrap.min.css" />
+ <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/bootstrap-responsive.min.css" />
+ <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/font-awesome-3.2.1.css" />
+ <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/style.css" />
+ <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/dashboard.css" />
+ <title>Sample Application FF4j</title>
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+ <div class="navbar-inner">
+  <div class="container">
+   <a class="brand" href="home" style="">
+    <img src="/ff4j-web-console/static/img/ff4j.png" height="45px" width="70px" style="height:45px;margin-top:10px"/>
+    &nbsp;<span >Sample Application FF4j</span>
+   </a>
+   
+   <div class="nav-collapse"  style="margin-top:15px">
+   	<ul class="nav pull-right">
+   	 <li>
+   	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="margin-top:10px">
+	   <input type="hidden" name="cmd" value="_s-xclick" />
+	   <input type="hidden" name="hosted_button_id" value="XD2BQ9KDJ7SGU" />
+	   <input type="image" 
+	   src="/ff4j-web-console/static/img/btn_donate_LG.gif" 
+	          border="0" name="submit" alt="Donate to FF4J" />
+		 <img alt="" border="0" src="/ff4j-web-console/static/img/pixel.gif" width="1" height="1"/>
+	  </form>
+		</p>
+     </li>	 
+	 </ul>
+	 </div>
+	 
+  </div>
+ </div>
+</div>
+
+<div class="subnavbar">
+ <div class="subnavbar-inner">
+  <div class="container">
+   <ul class="mainnav">
+    <li class="active2">
+     <a href="#" >
+      <i class="icon-home"></i>
+      <span >HOME</span>
+     </a>
+    </li>
+    <li>
+     <a href="https://github.com/ff4j/ff4j/wiki" >
+      <i class="icon-book"></i> 
+      <span >Documentation</span>
+     </a>
+    </li> 
+    <li>
+     <a href="http://ff4j.org" >
+      <i class="icon-globe"></i> 
+      <span>ff4j.org</span>
+     </a>
+    </li>   
+    </ul>
+    </div>
+  </div>
+</div>
+
+<div id="wrapper" class="container">
+  <div class="row">
+   <div class="span9">
+	<div id="content" class="clearfix">
+	 <div class="main-inner" style="margin-top: 60px">
+	  <div class="container">
+							
+	<div class="row">
+	 <div class="span12">
+	  <div class="widget widget-nopad">
+	   <div class="widget-header">
+		<i class="icon-dashboard"></i>
+		<h3><span>Getting Started !</span></h3>
+	   </div>
+	   <div class="widget-content" style="padding:5px;font-size:16px">
+	    This page is a demo for FF4j,Feature Flipping for Java. Items listed below are driven by features.
+	    <ul>
+	     <li>You can <b>EVALUATE</b> if a feature is toggled (here <b>AwesomeFeature</b>)   <span th:text="${featureAwesomeFlag}" style="color:blue"></span></li>
+	     <li>You can <b>READ</b> a <b>feature</b> in the UI like the description <span th:text="${ff4j_features_Awesomefeature.description}" style="color:blue"></span></li>
+	     <li>You can <b>READ</b> a <b>property</b> in the UI like the value <span th:text="${ff4j_properties_a.value}" style="color:blue"></span></li>
+	    </ul> 
+	    
+	   </div>
+	</div>
+	</div>
+	
+ 	<div class="span6">
+     <div class="widget widget-nopad">
+	  <div class="widget-header">
+	   <i class="icon-dashboard"></i>
+		<h3><span>WebConsole</span></h3>
+	  </div>
+      	<div class="widget-content">
+          <div class="shortcuts">
+			<a href="/ff4j-web-console" class="shortcut" style="margin-top:10px"> 
+			 <i class="shortcut-icon icon-desktop"></i> 
+			 <span class="shortcut-label">Web Console</span>
+			</a>
+		</div>
+       </div>
+     </div>
+    </div>
+    
+    <div class="span6">
+     <div class="widget widget-nopad">
+	  <div class="widget-header">
+	   <i class="icon-code"></i>
+		<h3><span>REST API</span></h3>
+	  </div>
+      <div class="widget-content" style="padding-top:10px;">
+          <div class="shortcuts">
+			<a href="/swagger-ui/" class="shortcut" > 
+			 <i class="shortcut-icon icon-desktop"></i> 
+			 <span class="shortcut-label">Swagger UI</span>
+			</a>
+			<a href="/api/ff4j" class="shortcut"> 
+			 <i class="shortcut-icon icon-code" ></i> 
+			 <span class="shortcut-label">Api Endpoint</span>
+			</a>
+			<a href="/v2/api-docs" class="shortcut"> 
+			 <i class="shortcut-icon icon-check"></i> 
+			 <span class="shortcut-label">Doc Endpoint</span>
+			</a>
+		  </div>
+       </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ </div>
+</div>
+
+</body>
+</html>

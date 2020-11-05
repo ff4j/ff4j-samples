@@ -9,13 +9,14 @@
     <version>1.8.9</version>
     
     <properties>
-    	<ff4j.version>1.8.9</ff4j.version>
+    	<ff4j.version>1.8.11-SNAPSHOT</ff4j.version>
+    	<springfox.version>3.0.0</springfox.version>
     </properties>
     
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.4.RELEASE</version>
+        <version>2.3.5.RELEASE</version>
     </parent>
     
     <dependencies>
@@ -24,9 +25,31 @@
             <artifactId>ff4j-spring-boot-starter</artifactId>
             <version>${ff4j.version}</version>
         </dependency>
-          <dependency>
+        
+        <!-- Get an appealing front page -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		
+		<!-- Api Documentation -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>${springfox.version}</version>
+		</dependency>
+		
+		<!--  FF4j in memory -->
+        <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-web</artifactId>
+            <version>${ff4j.version}</version>
+        </dependency>
+        
+        <!-- Setup with yaml -->
+        <dependency>
+            <groupId>org.ff4j</groupId>
+            <artifactId>ff4j-config-yaml</artifactId>
             <version>${ff4j.version}</version>
         </dependency>
     </dependencies>

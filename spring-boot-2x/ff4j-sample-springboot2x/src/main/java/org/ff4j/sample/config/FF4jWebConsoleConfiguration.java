@@ -10,8 +10,8 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Sample configuration for WebConsole and RestAPI
@@ -25,9 +25,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 @EnableFF4jSwagger
+@EnableSwagger2
 @ConditionalOnClass({FF4jDispatcherServlet.class})
 @AutoConfigureAfter(FF4jConfig.class)
-public class FF4jWebConsoleConfiguration extends SpringBootServletInitializer implements WebMvcConfigurer {
+public class FF4jWebConsoleConfiguration extends SpringBootServletInitializer {
     
     /**
      * Definition of the servlet for web console
@@ -49,10 +50,5 @@ public class FF4jWebConsoleConfiguration extends SpringBootServletInitializer im
         return new ServletRegistrationBean(ff4jDispatcherServlet, "/ff4j-web-console/*");
     }
     
-    /** {@inheritDoc} */
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**");
-    }
     
 }
