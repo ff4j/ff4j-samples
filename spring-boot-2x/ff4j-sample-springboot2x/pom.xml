@@ -6,10 +6,10 @@
     <groupId>org.ff4j</groupId>
     <artifactId>ff4j-sample-springboot2x</artifactId>
     <packaging>jar</packaging>
-    <version>1.8.9</version>
+    <version>1.8.11</version>
     
     <properties>
-    	<ff4j.version>1.8.11-SNAPSHOT</ff4j.version>
+    	<ff4j.version>1.8.11</ff4j.version>
     	<springfox.version>3.0.0</springfox.version>
     </properties>
     
@@ -39,11 +39,17 @@
 			<version>${springfox.version}</version>
 		</dependency>
 		
-		<!--  FF4j in memory -->
+		<!-- FF4j in memory -->
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-web</artifactId>
             <version>${ff4j.version}</version>
+            <exclusions>
+             <exclusion>
+              <groupId>javax.servlet.jsp.jstl</groupId>
+			  <artifactId>jstl-api</artifactId>
+			 </exclusion>
+            </exclusions>
         </dependency>
         
         <!-- Setup with yaml -->
@@ -59,7 +65,20 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+	            <configuration>
+	     		 <layers>
+                  <enabled>true</enabled>
+                 </layers>
+                </configuration>
             </plugin>
+            <plugin>
+        		<groupId>io.fabric8</groupId>
+        		<artifactId>fabric8-maven-plugin</artifactId> 
+        		<version>4.4.1</version>
+        		<configuration>
+        		</configuration>
+      		</plugin>
+            <!--
             <plugin>
 				<groupId>com.spotify</groupId>
 				<artifactId>dockerfile-maven-plugin</artifactId>
@@ -72,6 +91,7 @@
 					</buildArgs>
 				</configuration>
 			</plugin>
+			-->
 	    </plugins>
     </build>
 

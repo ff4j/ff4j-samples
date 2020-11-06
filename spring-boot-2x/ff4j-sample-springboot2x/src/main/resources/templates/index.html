@@ -13,6 +13,9 @@
  <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/font-awesome-3.2.1.css" />
  <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/style.css" />
  <link rel="stylesheet" type="text/css" media="all" href="/ff4j-web-console/static/css/dashboard.css" />
+ 
+ <script type="text/javascript" src="/ff4j-web-console/static/js/jquery/jquery-3.5.1.min.js" ></script>
+    
  <title>Sample Application FF4j</title>
 </head>
 
@@ -83,17 +86,21 @@
 	<div class="row">
 	 <div class="span12">
 	  <div class="widget widget-nopad">
-	   <div class="widget-header">
+	   <div class="widget-header" style="background-color:">
 		<i class="icon-dashboard"></i>
 		<h3><span>Getting Started !</span></h3>
 	   </div>
 	   <div class="widget-content" style="padding:5px;font-size:16px">
-	    This page is a demo for FF4j,Feature Flipping for Java. Items listed below are driven by features.
+	    This page is a demo for FF4j, Feature Flipping for Java. Items listed below are driven by features.
 	    <ul>
 	     <li>You can <b>EVALUATE</b> if a feature is toggled (here <b>AwesomeFeature</b>)   <span th:text="${featureAwesomeFlag}" style="color:blue"></span></li>
 	     <li>You can <b>READ</b> a <b>feature</b> in the UI like the description <span th:text="${ff4j_features_Awesomefeature.description}" style="color:blue"></span></li>
 	     <li>You can <b>READ</b> a <b>property</b> in the UI like the value <span th:text="${ff4j_properties_a.value}" style="color:blue"></span></li>
 	    </ul> 
+	    
+	    If you like <b>FF4j</b> please consider to give us a <a href="https://github.com/ff4j/ff4j/stargazers"><i class="icon-star"></i>
+	    <span id="github_stargazers"></span>  on Github</a> or support the team via 
+	    <a href="https://opencollective.com/ff4j/donate">Open Collective</a> or donate.
 	    
 	   </div>
 	</div>
@@ -145,6 +152,17 @@
  </div>
  </div>
 </div>
+
+<script type="text/javascript">
+$.ajax({
+	url: "https://api.github.com/repos/ff4j/ff4j",
+	headers: {},
+	success:function(apiResult) {
+	  $("#github_stargazers").text(apiResult.stargazers_count.toLocaleString());
+	  return apiResult;
+	}
+});
+</script>
 
 </body>
 </html>
