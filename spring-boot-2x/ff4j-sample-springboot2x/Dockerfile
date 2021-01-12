@@ -1,19 +1,43 @@
-# 1 - Build with Docker
+####################################################################
+# Stage 1 : MAVEN_BUILD
+#
+# Use a docker image with Maven to build the deliverable
+# Build everywhere
+####################################################################
 
+FROM maven:3.6.3-openjdk-11 AS MAVEN_BUILD
+MAINTAINER Cedrick Lunven
+COPY pom.xml /build/
+COPY src /build/src/
+WORKDIR /build/
+RUN mvn package
 
-# 2- Extract layers from BUILD
-FROM adoptopenjdk:11-jre-hotspot as builder
+####################################################################
+# Stage 2:  LAYERS_BUILD
+#
+# The deliverable has been built as layers as we asked for it in the
+# pom.xml. We will use those layers to buidld and limit number
+# of intermediate layers and leveraging on Docker Cache.
+####################################################################
+
+FROM adoptopenjdk:11-jre-hotspot as LAYERS_BUILD
 WORKDIR application
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} application.jar
+ARG JAR_FILE=/build/target/*.jar
+COPY --from=MAVEN_BUILD ${JAR_FILE} application.jar
 RUN java -Djarmode=layertools -jar application.jar extract
  
-# 3 - Build image from extracted layers
+####################################################################
+# Stage 3: BUILD IMAGE
+# 
+# We will use those layers to build image limiting number
+# of intermediate layers and leveraging on Docker Cache.
+####################################################################
+
 FROM adoptopenjdk:11-jre-hotspot
 WORKDIR application
 EXPOSE 8080
-COPY --from=builder application/dependencies/ ./
-COPY --from=builder application/spring-boot-loader ./
-COPY --from=builder application/snapshot-dependencies/ ./
-COPY --from=builder application/application/ ./
+COPY --from=LAYERS_BUILD application/dependencies/ ./
+COPY --from=LAYERS_BUILD application/spring-boot-loader ./
+COPY --from=LAYERS_BUILD application/snapshot-dependencies/ ./
+COPY --from=LAYERS_BUILD application/application/ ./
 ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]

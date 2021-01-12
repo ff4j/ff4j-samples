@@ -14,7 +14,6 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 ```
 docker build . -t ff4j/sample-springboot:mini
 ```
-
 📗 3. Run the image
 ```
 docker run -p 8080:8080 ff4j/sample-springboot:mini
@@ -75,6 +74,7 @@ TBD
 ```
 docker build . -t ff4j/sample-springboot:layers
 ```
+docker build . -t ff4j/ff4j-sample-springboot2x:1.8.11
 
 📗 3. Run the image
 ```

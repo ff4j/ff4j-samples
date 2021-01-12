@@ -71,6 +71,8 @@
                  </layers>
                 </configuration>
             </plugin>
+            
+            <!-- 
             <plugin>
         		<groupId>io.fabric8</groupId>
         		<artifactId>fabric8-maven-plugin</artifactId> 
@@ -78,6 +80,8 @@
         		<configuration>
         		</configuration>
       		</plugin>
+      		-->
+      		
             <!--
             <plugin>
 				<groupId>com.spotify</groupId>
