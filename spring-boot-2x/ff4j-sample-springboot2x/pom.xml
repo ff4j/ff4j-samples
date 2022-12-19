@@ -6,58 +6,28 @@
     <groupId>org.ff4j</groupId>
     <artifactId>ff4j-sample-springboot2x</artifactId>
     <packaging>jar</packaging>
-    <version>1.8.11</version>
-    
-    <properties>
-    	<ff4j.version>1.8.11</ff4j.version>
-    	<springfox.version>3.0.0</springfox.version>
-    </properties>
-    
+    <version>1.8.14-SNAPSHOT</version>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.5.RELEASE</version>
+        <version>2.6.5</version>
     </parent>
-    
+
     <dependencies>
+
         <dependency>
             <groupId>org.ff4j</groupId>
             <artifactId>ff4j-spring-boot-starter</artifactId>
-            <version>${ff4j.version}</version>
+            <version>${project.version}</version>
         </dependency>
-        
-        <!-- Get an appealing front page -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-		
-		<!-- Api Documentation -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>${springfox.version}</version>
-		</dependency>
-		
-		<!-- FF4j in memory -->
+
+        <!-- Web View -->
         <dependency>
-            <groupId>org.ff4j</groupId>
-            <artifactId>ff4j-web</artifactId>
-            <version>${ff4j.version}</version>
-            <exclusions>
-             <exclusion>
-              <groupId>javax.servlet.jsp.jstl</groupId>
-			  <artifactId>jstl-api</artifactId>
-			 </exclusion>
-            </exclusions>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-        
-        <!-- Setup with yaml -->
-        <dependency>
-            <groupId>org.ff4j</groupId>
-            <artifactId>ff4j-config-yaml</artifactId>
-            <version>${ff4j.version}</version>
-        </dependency>
+
     </dependencies>
     
     <build>
@@ -71,31 +41,6 @@
                  </layers>
                 </configuration>
             </plugin>
-            
-            <!-- 
-            <plugin>
-        		<groupId>io.fabric8</groupId>
-        		<artifactId>fabric8-maven-plugin</artifactId> 
-        		<version>4.4.1</version>
-        		<configuration>
-        		</configuration>
-      		</plugin>
-      		-->
-      		
-            <!--
-            <plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>dockerfile-maven-plugin</artifactId>
-				<version>1.4.13</version>
-				<configuration>
-					<repository>ff4j/${project.artifactId}</repository>
-        		    <tag>${project.version}</tag>
-        		    <buildArgs>
-						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-					</buildArgs>
-				</configuration>
-			</plugin>
-			-->
 	    </plugins>
     </build>
 
