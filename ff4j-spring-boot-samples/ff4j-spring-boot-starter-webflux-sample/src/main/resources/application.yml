@@ -1,0 +1,25 @@
+server:
+  port: ${PORT:8081}
+ff4j:
+  api:
+    context-path: /api/v1/ff4j     # default '/api/ff4j'
+    spring-doc:
+      enabled: true                # default 'false'
+  audit:
+    enabled: true                  # default 'false'
+  security:
+    enabled: true                  # default 'false'
+  web-console:
+    context-path: /ff4j-web        # default '/ff4j-web-console'
+    enabled: true                  # default 'false'
+    security:
+      enabled: true                # default 'false'
+      username: admin              # default 'admin'
+      password: admin              # default 'admin'
+springdoc:
+  swagger-ui:
+    tags-sorter: "alpha"
+    operations-sorter: "alpha"
+  group-configs:
+    - group: ff4j
+      paths-to-match: ${ff4j.api.context-path:/api/ff4j}/**

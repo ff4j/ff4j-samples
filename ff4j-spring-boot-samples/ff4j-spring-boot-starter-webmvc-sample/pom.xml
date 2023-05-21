@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.ff4j.samples</groupId>
+    <artifactId>ff4j-spring-boot-samples</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>ff4j-spring-boot-starter-webmvc-sample</artifactId>
+  <properties>
+    <kotlin.version>1.8.20</kotlin.version>
+    <ff4j.version>2.0.0-SNAPSHOT</ff4j.version>
+    <springdoc-openapi-starter.version>2.1.0</springdoc-openapi-starter.version>
+    <start-class>org.ff4j.spring.boot.starter.webmvc.sample.FF4jSpringBootWebMvcSampleApplication</start-class>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>org.ff4j</groupId>
+      <artifactId>ff4j-spring-boot-starter-webmvc</artifactId>
+      <version>${ff4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>${springdoc-openapi-starter.version}</version>
+    </dependency>
+    <!-- SLF4J Bridge -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j2-impl</artifactId>
+      <version>2.20.0</version>
+    </dependency>
+  </dependencies>
+</project>
