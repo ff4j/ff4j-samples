@@ -22,7 +22,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
  *
  * @author <a href="mailto:paul58914080@gmail.com">Paul Williams</a>
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class FF4jSpringBootWebMvcSampleApplication {
 
   public static void main(String[] args) {
