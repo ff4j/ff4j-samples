@@ -11,18 +11,17 @@
  *
  * Copyright 2013-2016 the original author or authors.
  */
-package org.ff4j.spring.boot.starter.webmvc.sample;
+package org.ff4j.spring.boot.starter.webflux.sample;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 /**
  * Created by Paul
  *
  * @author <a href="mailto:paul58914080@gmail.com">Paul Williams</a>
  */
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class FF4jSpringBootWebFluxSampleApplication {
 
   public static void main(String[] args) {

@@ -11,7 +11,7 @@
  *
  * Copyright 2013-2016 the original author or authors.
  */
-package org.ff4j.spring.boot.starter.webmvc.sample.config
+package org.ff4j.spring.boot.starter.webflux.sample.config
 
 import org.ff4j.FF4j
 import org.ff4j.conf.XmlParser
