@@ -3,8 +3,7 @@
 This is a webmvc starter with the following demonstration:
 - Webapi
 - Web console
-- Security (permit all)
-- Swagger
+- Open API
 
 ## How to build?
 
