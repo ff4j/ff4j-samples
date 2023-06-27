@@ -11,7 +11,7 @@
   <artifactId>ff4j-spring-boot-starter-webmvc-sample</artifactId>
   <properties>
     <kotlin.version>1.8.20</kotlin.version>
-    <ff4j.version>2.0.0-SNAPSHOT</ff4j.version>
+    <ff4j.version>2.0.0-RC1</ff4j.version>
     <springdoc-openapi-starter.version>2.1.0</springdoc-openapi-starter.version>
     <start-class>org.ff4j.spring.boot.starter.webmvc.sample.FF4jSpringBootWebMvcSampleApplication</start-class>
   </properties>
