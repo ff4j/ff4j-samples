@@ -16,7 +16,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<groupId>org.springframework.boot</groupId>
 		<version>1.5.15.RELEASE</version>
-		<relativePath />
+		<relativePath/>
 	</parent>
 
 	<!-- ~~~~~~~~~~~~~~ -->
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>org.elasticsearch</groupId>
 			<artifactId>elasticsearch</artifactId>
-			<version>7.6.2</version>
+			<version>7.17.7</version>
 		</dependency>
 		
 		<!-- Enforce Thymeleaf 2.x -->
