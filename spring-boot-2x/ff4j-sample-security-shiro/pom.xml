@@ -10,7 +10,7 @@
     <version>1.8.6</version>
     
     <properties>
-      <ff4j.version>1.8.6</ff4j.version>
+      <ff4j.version>1.8.13</ff4j.version>
     </properties>
     
     <parent>
