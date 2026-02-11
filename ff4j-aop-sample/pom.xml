@@ -16,6 +16,7 @@
     <junit-jupiter.version>6.0.2</junit-jupiter.version>
     <ff4j.version>2.1</ff4j.version>
     <spring.version>6.1.6</spring.version>
+    <assertj-core.version>3.27.6</assertj-core.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -34,6 +35,7 @@
       <artifactId>ff4j-aop</artifactId>
       <version>${ff4j.version}</version>
     </dependency>
+    <!-- Test dependencies -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
@@ -48,7 +50,7 @@
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.27.6</version>
+      <version>${assertj-core.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
