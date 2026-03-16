@@ -16,7 +16,7 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<groupId>org.springframework.boot</groupId>
 		<version>1.5.15.RELEASE</version>
-		<relativePath />
+		<relativePath/>
 	</parent>
 
 	<!-- ~~~~~~~~~~~~~~ -->
@@ -70,7 +70,7 @@
 		<dependency>
 			<artifactId>ff4j-spring-boot-web-api</artifactId>
 			<groupId>org.ff4j</groupId>
-			<version>1.7.1</version>
+			<version>1.8.13</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
