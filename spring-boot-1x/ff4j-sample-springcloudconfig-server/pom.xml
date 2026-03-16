@@ -15,7 +15,7 @@
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 	<properties>
 		<commonsconfig.version>1.10</commonsconfig.version>
-		<spring.cloudconfig.version>1.4.7.RELEASE</spring.cloudconfig.version>
+		<spring.cloudconfig.version>3.0.7</spring.cloudconfig.version>
 	</properties>
 
 	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
