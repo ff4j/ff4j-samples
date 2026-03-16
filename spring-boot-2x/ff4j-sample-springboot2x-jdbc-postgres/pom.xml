@@ -9,7 +9,7 @@
 	<description>Demo project for FF4J Server</description>
 
 	<properties>
-    	<ff4j.version>1.8.6</ff4j.version>
+    	<ff4j.version>2.1</ff4j.version>
     </properties>
     
     <parent>
