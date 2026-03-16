@@ -8,7 +8,7 @@
 	<name>ff4j-sample-simplejdbc</name>
 	
 	<properties>
-	   <ff4j.version>1.9-SNAPSHOT</ff4j.version>
+	   <ff4j.version>1.9</ff4j.version>
 	</properties>
 
 	<dependencies>
